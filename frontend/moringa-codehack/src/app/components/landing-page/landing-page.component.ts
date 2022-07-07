@@ -26,7 +26,7 @@ export class LandingPageComponent implements OnInit {
             /@([a-z\S]+)/.exec(String(res.email))![1] ==
             'student.moringaschool.com'
           ) {
-            this.router.navigate(['/student-dashboard']);
+            this.router.navigate(['/assessment']);
           } else {
             this.router.navigate(['/tmlanding']);
           }
