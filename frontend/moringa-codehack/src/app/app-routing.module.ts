@@ -12,6 +12,7 @@ import { TakeTestComponent} from './components/take-test/take-test.component';
 import { CreateTestComponent } from './components/create-test/create-test.component';
 import { PerformanceListComponent } from './components/performance-list/performance-list.component';
 import { GradesComponent } from './components/grades/grades.component';
+import { ResultsComponent } from './components/results/results.component';
 // import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'assessment', component: AssessmentComponent},
   { path: 'practise-test', component: PractiseTestComponent},
   { path: 'take-test', component: TakeTestComponent },
+  { path: 'results', component: ResultsComponent},
   {path:'tmlanding', component:TmLandingComponent},
   {path:'tmdashboard', component:TmDashboardComponent},
   {path:'tmlanding/login', component:TmLandingComponent,   
