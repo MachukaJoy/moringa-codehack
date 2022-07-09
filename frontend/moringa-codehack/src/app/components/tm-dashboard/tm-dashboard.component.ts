@@ -15,10 +15,17 @@ export class TmDashboardComponent implements OnInit {
 
   ngOnInit(): void {
 <<<<<<< HEAD
+<<<<<<< HEAD
   this.katas.get_katas().subscribe((kata)=> {
     this.kataQuestions = kata;
     console.log(this.kataQuestions)
 =======
+=======
+  this.katas.get_katas().subscribe((kata)=> {
+    this.kataQuestions = kata;
+    console.log(this.kataQuestions)
+
+>>>>>>> dacf8c4a831890350c7ff13c65af457ae24c5db2
     // var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
     // var yValues = [55, 49, 44, 24, 15];
     // var barColors = [
@@ -45,7 +52,10 @@ export class TmDashboardComponent implements OnInit {
     //     }
     //   }
     // });
+<<<<<<< HEAD
 >>>>>>> acf38a2e606815be1e802dd0216e377f32809a24
+=======
+>>>>>>> dacf8c4a831890350c7ff13c65af457ae24c5db2
   }
     )
 
