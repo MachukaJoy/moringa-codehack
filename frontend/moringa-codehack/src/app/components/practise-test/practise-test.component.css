@@ -1,4 +1,3 @@
-
 .container {
   padding-top: 70px;
   text-align: center;
@@ -7,6 +6,15 @@
 h2 {
   text-align: center;
   color: #F35011;
+  font-weight: bold;
+}
+
+.radio-questions {
+  width: 100%;
+}
+
+.card-content {
+  width: 100%;
 }
 
 .container1 {
@@ -18,11 +26,19 @@ h2 {
   display: block;
   height: auto;
   background: white;
-  backdrop-filter: blur(10px)
+  backdrop-filter: blur(10px);
+
 }
 
 h5 {
-  padding-left: 2vh;
+  padding-top: 2vh;
+  padding-left: 3vh;
+}
+
+.content {
+  padding-left: 4vw;
+
+
 }
 
 .containerone {
@@ -36,6 +52,7 @@ h5 {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
 }
 
 .checkmark {
@@ -46,9 +63,11 @@ h5 {
   width: 25px;
   background-color: #eee;
   border-radius: 50%;
+
 }
 
 .containerone input {
+
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -96,7 +115,9 @@ h5 {
 }
 
 .bottom {
-  float: right;
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
 }
 
 button {
@@ -109,21 +130,61 @@ button {
 
 .code-editor {
   background: white;
-  padding: 5vh;
+  padding: 2vw;
   margin-top: 10vh;
   margin-left: 5vh;
   margin-right: 5vh;
+  border-radius: 8px;
 
+}
+
+.solution {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: auto;
+  border-radius: 4px;
 }
 
 .codearea {
-  width: 110vh;
-  float: right;
+  width: 100%;
+  height: 70vh;
+}
 
+h4 {
+  color: #3A4863;
+  text-align: center;
+}
+
+.testarea {
+  width: 40%;
+  height: auto;
+  border-style: solid;
+  border-width: 4px;
+  border-color: #F35011;
+  border-radius: 8px;
+  padding: 10px;
 }
 
 .cardone {
-  max-width: 60vh;
-  height: 60vh;
+  width: 30%;
   background-color: #eee;
+  height: 40vh;
 }
+
+form {
+  width: 58%;
+  display: block;
+  padding-left: 1.7vw;
+  border-radius: 4px;
+
+}
+
+h3 {
+  color: #F35011;
+  font-style: italic;
+  font-weight: bold;
+}
+
+
+
