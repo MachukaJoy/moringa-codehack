@@ -42,7 +42,7 @@ export class TmLandingComponent implements OnInit {
     });
 
     // - - - - - - questions service pulling - - - - - - - //
-    this.questions.get_questions().subscribe((response) => {
+    this.questions.get_questions().subscribe((response:any) => {
       console.log(response);
     });
   }
