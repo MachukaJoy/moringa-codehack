@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../classes/user/user';
 import { HttpClient } from '@angular/common/http';
+import { AuthenticatedUserService } from 'src/app/services/authenticated-user/authenticated-user.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -11,19 +12,19 @@ import { HttpClient } from '@angular/common/http';
 export class LandingPageComponent implements OnInit {
   message = 'Please login or signup';
   userEmail!: string;
-  constructor(private router: Router, private http: HttpClient) {}
+  user!: any;
+  constructor(
+    private router: Router,
+    private authentication: AuthenticatedUserService
+  ) {}
 
   ngOnInit(): void {
-    this.http
-      .get<User>(
-        'http://localhost:8000/api/authenticated_user/',
-
-        { withCredentials: true }
-      )
-      .subscribe((res) => {
-        if (/@([a-z\S]+)/.exec(String(res.email))) {
+    this.authentication.getUser().subscribe((response: User) => {
+      if (response.id) {
+        this.user = response;
+        if (/@([a-z\S]+)/.exec(String(this.user.email))) {
           if (
-            /@([a-z\S]+)/.exec(String(res.email))![1] ==
+            /@([a-z\S]+)/.exec(String(this.user.email))![1] ==
             'student.moringaschool.com'
           ) {
             this.router.navigate(['/assessment']);
@@ -31,6 +32,7 @@ export class LandingPageComponent implements OnInit {
             this.router.navigate(['/tmlanding']);
           }
         }
-      });
+      }
+    });
   }
 }

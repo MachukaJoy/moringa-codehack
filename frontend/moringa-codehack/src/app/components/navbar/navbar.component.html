@@ -14,8 +14,9 @@
     <!--<a href="#search">Search</a> -->
     <div class="authentication">
       <!-- <p>{{message}}</p> -->
-      <button routerLink="/login">Login</button>
-      <button routerLink="/signup">Sign Up</button>
+      <button routerLink="/login" *ngIf="!user">Login</button>
+      <button routerLink="/signup" *ngIf="!user">Sign Up</button>
+      <button routerLink="/landing" (click)="logOut()" *ngIf="user">Log Out</button>
     </div>
     <!-- <a href="#profile">Profile</a> -->
   </div>
