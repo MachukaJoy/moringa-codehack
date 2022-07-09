@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap");
+* {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+}
 body {
   background-color: #101f3c;
   height: 100vh;
