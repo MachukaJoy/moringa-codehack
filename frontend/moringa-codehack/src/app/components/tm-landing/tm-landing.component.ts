@@ -31,18 +31,18 @@ export class TmLandingComponent implements OnInit {
     titleMenu.addEventListener('click', () => {
       iconWrapper.style.display = 'block';
       titleWrapper.style.display = 'none';
-      navWrapper.style.width = '7%';
-      // pageWrapper.style.marginLeft='50%'
+      navWrapper.style.width = '3.5%';
+      pageWrapper.style.paddingLeft = '3%';
     });
     iconMenu.addEventListener('click', () => {
       titleWrapper.style.display = 'block';
       iconWrapper.style.display = 'none';
-      navWrapper.style.width = '15%';
-      pageWrapper.style.paddingLeft = '7%';
+      navWrapper.style.width = '13%';
+      pageWrapper.style.paddingLeft = '13%';
     });
 
     // - - - - - - questions service pulling - - - - - - - //
-    this.questions.get_questions().subscribe((response:any) => {
+    this.questions.get_questions().subscribe((response: any) => {
       console.log(response);
     });
   }
