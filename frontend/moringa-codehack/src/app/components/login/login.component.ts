@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
         { withCredentials: true }
       )
       .subscribe((res) => {
+        console.log(res);
         this.router.navigate(['/landing']);
       });
   }
