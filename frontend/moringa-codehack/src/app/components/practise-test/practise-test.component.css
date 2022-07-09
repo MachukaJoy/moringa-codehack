@@ -23,7 +23,7 @@ h2 {
   margin-right: 5vh;
   padding: 5vh;
   border-radius: 8px;
-  display: block;
+  display:block;
   height: auto;
   background: white;
   backdrop-filter: blur(10px);
@@ -107,6 +107,7 @@ h5 {
 }
 
 .card {
+  
   background: inherit;
 }
 
@@ -135,6 +136,7 @@ button {
   margin-left: 5vh;
   margin-right: 5vh;
   border-radius: 8px;
+  display:none;
 
 }
 
@@ -185,6 +187,21 @@ h3 {
   font-style: italic;
   font-weight: bold;
 }
-
-
-
+.choices{
+padding-left: 800px;
+margin-top: 50px;
+margin-bottom: 5px;
+margin-left: 40px;
+justify-content: center;
+align-items: center;
+}
+ button {
+   background-color: #3A4863;
+   color: white;
+   padding-right: 20px;
+   padding-left: 20px;
+   border-radius: 8px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   margin: 10px;
+ }
