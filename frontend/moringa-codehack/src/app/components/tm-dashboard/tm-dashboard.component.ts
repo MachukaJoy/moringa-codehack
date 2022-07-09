@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { KatasService } from 'src/app/katas.service';
 
 @Component({
   selector: 'app-tm-dashboard',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TmDashboardComponent implements OnInit {
 
-  constructor() { }
+  kataQuestions! : any;
+  createdAssessment = 'Venecia';
+
+  constructor(private katas:KatasService) { }
 
   ngOnInit(): void {
+  this.katas.get_katas().subscribe((kata)=> {
+    this.kataQuestions = kata;
+    console.log(this.kataQuestions)
   }
+    )
 
+  }
+ 
+  sendQuestion(): void {
+   this.katas.studentAssessment=this.createdAssessment
+   console.log(this.katas.studentAssessment)
+  }
 }
