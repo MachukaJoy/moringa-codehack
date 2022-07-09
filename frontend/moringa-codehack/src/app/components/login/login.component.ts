@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   submit(userName: string, userPassword: string): void {
     this.http
-      .post(
+      .post<object>(
         'http://localhost:8000/api/login/',
         {
           username: userName,
@@ -22,8 +22,13 @@ export class LoginComponent implements OnInit {
         },
         { withCredentials: true }
       )
-      .subscribe((res) => {
-        this.router.navigate(['/landing']);
+      .subscribe((response: object) => {
+        if (Object.keys(response).includes('jwt')) {
+          console.log(response);
+          this.router.navigate(['/landing']);
+        } else {
+          console.log(response);
+        }
       });
   }
 }

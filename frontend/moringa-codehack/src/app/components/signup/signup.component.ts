@@ -14,7 +14,6 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {}
 
   submit(userName: string, userEmail: string, userPassword: string): void {
-    console.log(userName, userEmail, userPassword);
     this.http
       .post<object>('http://localhost:8000/api/register/', {
         username: userName,
@@ -22,6 +21,7 @@ export class SignupComponent implements OnInit {
         password: userPassword,
       })
       .subscribe((res) => {
+        console.log(res);
         this.response = res;
         this.message = this.response.message;
         this.router.navigate(['/login']);
