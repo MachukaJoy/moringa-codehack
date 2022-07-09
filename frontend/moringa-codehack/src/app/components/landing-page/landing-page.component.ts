@@ -1,6 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '../../classes/user/user';
+import { HttpClient } from '@angular/common/http';
+import { AuthenticatedUserService } from 'src/app/services/authenticated-user/authenticated-user.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -9,28 +11,28 @@ import { Router } from '@angular/router';
 })
 export class LandingPageComponent implements OnInit {
   message = 'Please login or signup';
-  constructor(private http: HttpClient, private router: Router) {}
+  userEmail!: string;
+  user!: any;
+  constructor(
+    private router: Router,
+    private authentication: AuthenticatedUserService
+  ) {}
 
   ngOnInit(): void {
-    //   this.http.get('http://localhost/8000/api/authenticated_user/').subscribe({
-    //     next: (v) => console.log(v),
-    //     error: (e) => console.error(e),
-    //     complete: () => console.info('complete')
-    // })
-    this.http
-      .get('http://localhost/8000/api/authenticated_user/', {
-        withCredentials: true,
-      })
-      .subscribe({
-        next: (res: any) => {
-          console.log(res);
-        },
-        error: (error: any) => {
-          console.log(error);
-        },
-        complete: () => {
-          console.log('complete');
-        },
-      });
+    this.authentication.getUser().subscribe((response: User) => {
+      if (response.id) {
+        this.user = response;
+        if (/@([a-z\S]+)/.exec(String(this.user.email))) {
+          if (
+            /@([a-z\S]+)/.exec(String(this.user.email))![1] ==
+            'student.moringaschool.com'
+          ) {
+            this.router.navigate(['/assessment']);
+          } else {
+            this.router.navigate(['/tmlanding']);
+          }
+        }
+      }
+    });
   }
 }
