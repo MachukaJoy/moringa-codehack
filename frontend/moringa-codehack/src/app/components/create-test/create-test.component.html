@@ -2,7 +2,7 @@
   <button  id="navbtns" data-toggle="modal" data-target="#addquestion" > <i class="fa fa-plus" style="margin-right: 7px; font-size:small;"></i>Add</button>
   <button  id="navbtns" data-toggle="modal" data-target=".bd-example-modal-lg"> Publish</button>
   <a class="active" href="/tmlanding/create-test" id="navlinks" style="color: #F35011;">Assessments</a>
-  <a href="/tmlanding/create-test" id="navlinks">Candidates</a>
+  
   <hr>
   <div id="quetable">
     <table>
@@ -26,19 +26,21 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
+          
         </div>
         <div class="modal-body">
+          <h6 style="text-align: center;background-color: #101F3C;color: #F35011;">Hold down the Ctrl (windows) or Command (Mac) button to select multiple options.</h6><br>
           <form class="container" action="submit">
             <div class="section">
               <label for="assesment"><b>Pick Assesment : &nbsp;</b></label>
-              <select name="assesment" id="assesment">
+              <select name="assesment" id="assesment"  style="float: right;width: 15vw;">
                 <option value="arrays">Python Arrays</option>
                 <option value="angular">Angular Directives</option>
                 <option value="django">Django Assesment</option>
                 <option value="general">General Interview</option>
-              </select>
+              </select><br>
               <label for="questions"><b>Select all questions to add : &nbsp;</b></label>
-              <select name="questions" id="questions">
+              <select name="questions" id="questions" multiple style="float: right;">
                 <option value="arrays">Print 1  to 10 in an array</option>
                 <option value="pomodoro">Pomodoro</option>
                 <option value="hello">Django Hello World</option>
@@ -46,14 +48,17 @@
               </select>
             </div>
           </form>
-          <br>
-          <h6 style="text-align: center;">OR</h6><br>
-          <form class="container" action="submit">
+          <br><br><br><br>
+          <div >
+          <input id="createassesmentcheckbox" type="checkbox" > Want to create your own assesment?
+        </div><br>
+          
+          <form class="container" action="submit" id="createownassesment" style="display: none;">
             <div class="section">
               <label for="assesment"><b>Create Assesment : &nbsp;</b></label>
-              <input type="text" id="testname" class="no-outline" placeholder="Enter Assesment name" name="testname" required>
+              <input type="text" id="testname" class="no-outline" placeholder="Enter Assesment name" name="testname" required style="float: right; width: 15vw;">
               <label for="questions"><b>Select all questions to add : &nbsp;</b></label>
-              <select name="questions" id="questions">
+              <select name="questions" id="questions" multiple style="float: right;">
                 <option value="arrays">Print 1  to 10 in an array</option>
                 <option value="pomodoro">Pomodoro</option>
                 <option value="hello">Django Hello World</option>
@@ -61,6 +66,7 @@
               </select>
             </div>
           </form>
+          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -80,22 +86,22 @@
           </button>
         </div>
         <div class="modal-body">
+          
           <form class="container" action="submit">
             <div class="section">
               <label for="assesment"><b>Pick Assesment : &nbsp;</b></label>
-              <select name="assesment" id="assesment">
+              <select name="assesment" id="assesment" >
                 <option value="arrays">Python Arrays</option>
                 <option value="angular">Angular Directives</option>
                 <option value="django">Django Assesment</option>
                 <option value="general">General Interview</option>
-              </select>&nbsp;
+              </select>&nbsp; &nbsp;
               <label for="time"><b>Enter time for assesment : &nbsp;</b></label>
               <input type="text" id="time" placeholder="Enter time in mins" name="time" required>
               <button type="button" id="publishbtn" class="btn btn-primary">Publish</button>
-          
             </div>
           </form>
-          <br>
+          
           <div class="container" >   
           <input id="sendinvitecheckbox" type="checkbox"> Send Invite?
           <div id="sendinvite">
