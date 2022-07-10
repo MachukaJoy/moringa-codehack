@@ -17,6 +17,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { TmLandingComponent } from './components/tm-landing/tm-landing.component' ;
+// import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { TmLandingComponent } from './components/tm-landing/tm-landing.component
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    // NgMultiSelectDropDownModule.forRoot()
   ],
 
   providers: [],
