@@ -10,9 +10,11 @@ import { QuestionsService } from 'src/app/services/questions/questions.service';
 })
 export class CreateTestComponent implements OnInit {
   dropdownList:any = [];
+  katasList:any =[];
+  multipleChoiceList:any = [];
   // dropdownSettings:IDropdownSettings={};
 
-  constructor(private subjective:QuestionsService) { }
+  constructor(private subjective:QuestionsService, private katas:QuestionsService, private multiple:QuestionsService) { }
 
   ngOnInit(): void {
     
@@ -20,6 +22,12 @@ export class CreateTestComponent implements OnInit {
     let inviteCheckbox = document.querySelector("#sendinvitecheckbox") as HTMLInputElement
     let assesmentCheckbox = document.querySelector("#createassesmentcheckbox") as HTMLInputElement
     let createassesment = document.querySelector("#createownassesment") as HTMLFormElement
+    let katascheck = document.querySelector("#katascheckbox") as  HTMLInputElement
+    let subjectivecheck = document.querySelector("#subjectivecheckbox") as HTMLInputElement
+    let multiplecheck = document.querySelector("#multiplechoicecheckbox") as HTMLInputElement
+    let katasselect = document.querySelector("#katasquestions") as HTMLSelectElement
+    let multipleselect = document.querySelector("#multiplechoicequestions") as HTMLSelectElement
+    let subjectiveselect = document.querySelector("#subjectivequestions") as HTMLSelectElement
 
     inviteCheckbox.addEventListener('change', function() {
       if (this.checked) {
@@ -36,7 +44,35 @@ export class CreateTestComponent implements OnInit {
         createassesment.style.display='none'
       }
     });
+
+    katascheck.addEventListener('change', function(){
+      if (this.checked){
+        katasselect.style.display='block'
+      } else{
+        katasselect.style.display='none'
+      }
+    });
+
+    multiplecheck.addEventListener('change', function(){
+      if (this.checked){
+        multipleselect.style.display='block'
+      } else{
+        multipleselect.style.display='none'
+      }
+    });
+
+    subjectivecheck.addEventListener('change', function(){
+      if (this.checked){
+        subjectiveselect.style.display='block'
+      } else{
+        subjectiveselect.style.display='none'
+      }
+    });
+
+
     this.getSubjective()
+    this.getkatas()
+    this.getMultipleChoice()
   }
   getSubjective(){
     this.subjective.get_subjective().subscribe(response =>{
@@ -45,6 +81,18 @@ export class CreateTestComponent implements OnInit {
     })
   }
 
-  
+  getkatas(){
+    this.katas.get_katas().subscribe(response =>{
+      console.log(response)
+      this.katasList=response
+    })
+  }
+
+  getMultipleChoice(){
+    this.multiple.get_questions().subscribe(response =>{
+      console.log(response)
+      this.multipleChoiceList=response
+    })
+  }
 
 }

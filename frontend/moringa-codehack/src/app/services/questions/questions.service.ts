@@ -18,6 +18,11 @@ export class QuestionsService {
       'https://api-moringa-codehack.herokuapp.com/api/squestions/'
     )
     }
+  get_katas() {
+    return this.http.get(
+      'https://api-moringa-codehack.herokuapp.com/api/kata/'
+    )
+    }
 }
   
 
