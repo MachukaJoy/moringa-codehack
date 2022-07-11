@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class QuestionsService {
+  
   constructor(private http: HttpClient) {}
 
   get_questions() {
