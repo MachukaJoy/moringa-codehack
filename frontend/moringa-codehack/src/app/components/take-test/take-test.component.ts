@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { KatasService } from 'src/app/katas.service';
+import { KatasService } from 'src/app/services/katas/katas.service';
 
 
 @Component({
