@@ -12,8 +12,9 @@ import { TakeTestComponent} from './components/take-test/take-test.component';
 import { CreateTestComponent } from './components/create-test/create-test.component';
 import { PerformanceListComponent } from './components/performance-list/performance-list.component';
 import { GradesComponent } from './components/grades/grades.component';
-// import { HttpClientModule } from '@angular/common/http';
-// import { HttpClientModule } from '@angular/common/http';
+import { ResultsComponent } from './components/results/results.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
  
 
@@ -25,14 +26,11 @@ const routes: Routes = [
   { path: 'student-dashboard', component: StudentDashboardComponent},
   { path: 'assessment', component: AssessmentComponent},
   { path: 'practise-test', component: PractiseTestComponent},
+  { path: 'take-test', component: TakeTestComponent },
+  { path: 'results', component: ResultsComponent},
   {path:'tmlanding', component:TmLandingComponent},
   {path:'tmdashboard', component:TmDashboardComponent},
-  {path:'tmlanding/login', component:TmLandingComponent},
   {path: 'take-test', component: TakeTestComponent },
-
-children:[{
-  path:'', component:LoginComponent
-}],
 {path:'tmlanding/dashboard', component:TmLandingComponent,
 children:[{
   path:'', component:TmDashboardComponent
@@ -49,12 +47,11 @@ children:[{
 children:[{
   path:'', component:GradesComponent
 }]},
-  
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), HttpClientModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

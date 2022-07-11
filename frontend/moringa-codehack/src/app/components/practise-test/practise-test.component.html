@@ -1,30 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
- <div class="container1">
-    <h2> Multiple Choice Practice </h2>
-    <div>
-   <h6>Welcome to Moringa Codehack</h6>
-   </div>
- </div>
- <div class="container2">
-     <h2> Code Practice </h2>
-   <!-- <div>
-    <h5> Write your Code here</h5>
-   <textarea>
 
-</textarea>
-   </div> -->
-<form>
-<textarea required placeholder="Write code here" name="" cdkTextareaAutosize>
-        </textarea>
-</form>
+<div class="choices">
+<button id="mcque">
+  MULTIPLE CHOICES PRACTISE
+</button>
+<button id="kataque">
+  KATA PRACTICE
+</button>
+ <button routerLink="/assessment">
+  ASSESSMENTS
+</button>
  </div>
-</body>
-</html>
+
+
+<div class="container1">
+  <h2>Assessment Name</h2>
+  <div class="timer">
+    <h3>5:30</h3>
+  </div>
+  <div class="question-remaining">
+  </div>
+  <form class="radio-questions">
+    <div class="card">
+      <div class="card-content">
+        <h5>What is the correct number ?</h5>
+      </div>
+      <div class="content">
+        <label class="containerone">One
+          <input type="radio" checked="checked" name="radio" id="answer">
+          <span class="checkmark"></span>
+        </label>
+        <label class="containerone">Two
+          <input type="radio" name="radio" id="answer">
+          <span class="checkmark"></span>
+        </label>
+        <label class="containerone">Three
+          <input type="radio" name="radio" id="answer">
+          <span class="checkmark"></span>
+        </label>
+        <label class="containerone">Four
+          <input type="radio" name="radio" id="answer">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+      <div class="bottom">
+        <button class="assessment btn btn-primary" type="submit">SUBMIT</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+<div class="code-editor">
+  <h2>Assessment Name</h2>
+  <div class="timer">
+    <h3>5:30</h3>
+  </div>
+  <div class="card-content">
+    <h5>In this kata you will create a function that takes a list of non-negative integers and strings and returns a new
+      list with the strings filtered out. In this kata you will create a function that takes a list of non-negative
+      integers and strings and returns a new list with the strings filtered out.In this kata you will create a function
+      that takes a list of non-negative integers and strings and returns a new list with the strings filtered out.</h5>
+  </div>
+  <div class="solution">
+    <form>
+      <textarea required placeholder="Write code here" class="codearea">
+          </textarea>
+      <pre></pre>
+      <button class="btn btn-primary">RUN</button>
+      <div class="bottom">
+        <button class="kata btn btn-primary" type="submit">TEST</button>
+      </div>
+    </form>
+    <div class="testarea">
+      <h4> Output </h4>
+      <p>Test Results:</p>
+      <pre></pre>
+      <p> Test Passed </p>
+      <pre></pre>
+      <p> Test Passed </p>
+      <pre></pre>
+      <p> Test Passed </p>
+      <pre></pre>
+      <p> Test Passed </p>
+      <pre></pre>
+      <p> Test Passed </p>
+      <pre></pre>
+      <h6>You have passed all of the tests! :)</h6>
+    </div>
+  </div>
+</div>

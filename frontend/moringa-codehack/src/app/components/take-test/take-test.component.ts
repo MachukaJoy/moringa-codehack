@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { KatasService } from 'src/app/katas.service';
 
 
 @Component({
@@ -8,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TakeTestComponent implements OnInit {
 
-  constructor() { }
+  constructor(private kata: KatasService) { }
 
   ngOnInit(): void {
+    console.log(this.kata.studentAssessment)
   }
 
 }
