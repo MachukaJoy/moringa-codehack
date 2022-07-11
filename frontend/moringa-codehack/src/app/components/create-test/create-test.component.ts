@@ -1,4 +1,5 @@
 import { Component, OnInit  } from '@angular/core';
+import { QuestionsService } from 'src/app/services/questions/questions.service';
 // import { IDropdownSettings, } from 'ng-multiselect-dropdown';
 
 
@@ -8,10 +9,10 @@ import { Component, OnInit  } from '@angular/core';
   styleUrls: ['./create-test.component.css']
 })
 export class CreateTestComponent implements OnInit {
-  // dropdownList:any = [];
+  dropdownList:any = [];
   // dropdownSettings:IDropdownSettings={};
 
-  constructor() { }
+  constructor(private subjective:QuestionsService) { }
 
   ngOnInit(): void {
     
@@ -35,8 +36,14 @@ export class CreateTestComponent implements OnInit {
         createassesment.style.display='none'
       }
     });
+    this.getSubjective()
   }
-  
+  getSubjective(){
+    this.subjective.get_subjective().subscribe(response =>{
+      console.log(response)
+      this.dropdownList=response
+    })
+  }
 
   
 

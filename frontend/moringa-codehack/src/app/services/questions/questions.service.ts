@@ -12,11 +12,11 @@ export class QuestionsService {
       'https://api-moringa-codehack.herokuapp.com/api/mcquestions/'
     );
   }
-
   get_subjective() {
-    return this.http.get( 'https://api-moringa-codehack.herokuapp.com/api/squestions/')
-    };
-
+    return this.http.get(
+      'https://api-moringa-codehack.herokuapp.com/api/squestions/'
+    )
+    }
 }
   
 

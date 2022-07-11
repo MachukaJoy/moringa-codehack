@@ -39,12 +39,9 @@
                 <option value="django">Django Assesment</option>
                 <option value="general">General Interview</option>
               </select><br>
-              <label  for="questions"><b>Select all questions to add : &nbsp;</b></label>
-              <select get_subjective() name="questions" id="questions" multiple style="float: right;">
-                <option value="arrays">Print 1  to 10 in an array</option>
-                <option value="pomodoro">Pomodoro</option>
-                <option value="hello">Django Hello World</option>
-                <option value="fib">Fibonacci Series</option>
+              <label for="questions"><b>Select all questions to add : &nbsp;</b></label>
+              <select name="questions" id="questions" multiple style="float: right;">
+                 <option *ngFor="let item of dropdownList" value="{{item.id}}">{{item.text}}</option>
               </select>
             </div>
           </form>
@@ -58,11 +55,8 @@
               <label for="assesment"><b>Create Assesment : &nbsp;</b></label>
               <input type="text" id="testname" class="no-outline" placeholder="Enter Assesment name" name="testname" required style="float: right; width: 15vw;">
               <label for="questions"><b>Select all questions to add : &nbsp;</b></label>
-              <select name="questions" id="questions" multiple style="float: right;">
-                <option value="arrays">Print 1  to 10 in an array</option>
-                <option value="pomodoro">Pomodoro</option>
-                <option value="hello">Django Hello World</option>
-                <option value="fib">Fibonacci Series</option>
+              <select  name="questions" id="questions" multiple style="float: right;">
+                <option *ngFor="let item of dropdownList" value="{{item.id}}">{{item.text}}</option>
               </select>
             </div>
           </form>
