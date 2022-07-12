@@ -3,7 +3,7 @@
 <div class="container1">
   <h2>Assessment Name</h2>
   <div class="timer">
-    <h3>5:30</h3>
+    <h3><cd-timer format="intelli" [startTime]="3600" [countdown]="true"(onComplete)="submitAssessment()"></cd-timer></h3>
   </div>
   <div class="question-remaining">
   </div>
@@ -42,7 +42,9 @@
 <div class="code-editor">
   <h2>Assessment Name</h2>
   <div class="timer">
-    <h3>5:30</h3>
+    <h3>
+      <cd-timer format="intelli" [startTime]="3600" [countdown]="true" (onComplete)="submitAssessment()"></cd-timer>
+    </h3>
   </div>
   <div class="card-content">
     <h5>In this kata you will create a function that takes a list of non-negative integers and strings and returns a new
@@ -90,6 +92,11 @@
 
 <div class="subjective">
   <h2>Assessment Name</h2>
+  <div class="timer">
+  <h3>
+    <cd-timer format="intelli" [startTime]="3600" [countdown]="true" (onComplete)="submitAssessment()"></cd-timer>
+  </h3>
+  </div>
   <form class="free">
     <h5>What are the advantages and disadvantages of using a Javascript framework?</h5>
     <textarea required placeholder="answer" class="freetext">
