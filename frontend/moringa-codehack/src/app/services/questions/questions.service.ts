@@ -5,9 +5,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class QuestionsService {
+  
   constructor(private http: HttpClient) {}
 
-  get_questions() {
+  get_mcquestions() {
     return this.http.get(
       'https://api-moringa-codehack.herokuapp.com/api/mcquestions/'
     );
@@ -17,6 +18,15 @@ export class QuestionsService {
       'https://api-moringa-codehack.herokuapp.com/api/squestions/'
     )
     }
-}
-  
+  get_katas() {
+    return this.http.get(
+      'https://api-moringa-codehack.herokuapp.com/api/kata/'
+    )
+    }
+  get_assesments() {
+    return this.http.get(
+      'https://api-moringa-codehack.herokuapp.com/api/assessments/'
+      )
+    }
 
+  }

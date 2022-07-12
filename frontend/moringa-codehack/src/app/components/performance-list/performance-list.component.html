@@ -6,11 +6,8 @@
     <a href="/tmlanding/peformance-list" id="navlinks" style="color: #F35011;">Candidates</a>
     <div style="float: right;">
       <label for="questions" style=" color: white;"><b>Select assesment to view: &nbsp;</b></label>
-      <select name="assesments" id="assesments">
-        <option value="arrays">Python series</option>
-        <option value="pomodoro">Pomodoro</option>
-        <option value="hello">Django Assesment</option>
-        <option value="fib">Javascript</option>
+      <select name="assesments" id="assesments" style="width: 100%;">
+        <option *ngFor="let item of assessmentList" value="{{item.id}}">{{item.name}}</option>
       </select>
     </div>
   </div>

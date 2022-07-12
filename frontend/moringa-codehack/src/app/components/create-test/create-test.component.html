@@ -11,15 +11,15 @@
       <th>Difficulty</th>
       <th>Passmark</th>
       </tr>
-      <tr>
-      <td>Python Arrays</td>
-      <td>Easy</td>
-      <td>10</td>
+      <tr *ngFor="let item of assessmentList">
+      <td >{{item.name}}</td>
+      <td >{{item.difficulty}}</td>
+      <td >{{item.pass_mark}}</td>
       </tr>
     </table>
   </div>
   <div class="modal fade" id="addquestion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog  modal-lg" role="document">
       <div class="modal-content" id="addquestioncontent">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">Create Assesment</h5>
@@ -30,33 +30,48 @@
         </div>
         <div class="modal-body">
           <h6 style="text-align: center;background-color: #101F3C;color: #F35011;">Hold down the Ctrl (windows) or Command (Mac) button to select multiple options.</h6><br>
-          <form class="container" action="submit">
+          <!-- <form class="container" action="submit">
             <div class="section">
-              <label for="assesment"><b>Pick Assesment : &nbsp;</b></label>
-              <select name="assesment" id="assesment"  style="float: right;width: 15vw;">
-                <option value="arrays">Python Arrays</option>
-                <option value="angular">Angular Directives</option>
-                <option value="django">Django Assesment</option>
-                <option value="general">General Interview</option>
-              </select><br>
-              <label for="questions"><b>Select all questions to add : &nbsp;</b></label>
-              <select name="questions" id="questions" multiple style="float: right;">
-                 <option *ngFor="let item of dropdownList" value="{{item.id}}">{{item.text}}</option>
+              <label for="assesment"><b>Pick Assesment : &nbsp;</b></label><br>
+              <select name="assesment" id="assesment"  style="float: left;width: 15vw;">
+                <option *ngFor="let item of assessmentList" value="{{item.id}}">{{item.text}}</option>
+                
+              </select><br><br>
+              <label for="questions"><b>Select all questions to add : &nbsp;</b></label><br>
+              <select name="questions" id="questions" multiple style="float: left;">
+                 <option *ngFor="let item of subjectiveList" value="{{item.id}}">{{item.text}}</option>
               </select>
             </div>
           </form>
-          <br><br><br><br>
-          <div >
+          <br><br><br><br><br>
+          <div>
           <input id="createassesmentcheckbox" type="checkbox" > Want to create your own assesment?
-        </div><br>
+        </div><br> -->
           
-          <form class="container" action="submit" id="createownassesment" style="display: none;">
+          <form class="container" action="submit" id="createownassesment">
             <div class="section">
-              <label for="assesment"><b>Create Assesment : &nbsp;</b></label>
-              <input type="text" id="testname" class="no-outline" placeholder="Enter Assesment name" name="testname" required style="float: right; width: 15vw;">
-              <label for="questions"><b>Select all questions to add : &nbsp;</b></label>
-              <select  name="questions" id="questions" multiple style="float: right;">
-                <option *ngFor="let item of dropdownList" value="{{item.id}}">{{item.text}}</option>
+              <label for="assesment"><b>Create Assesment : &nbsp;</b></label><br>
+              <input type="text" id="testname" class="no-outline" placeholder="Enter Assesment name" name="testname" required style="float: left; width: 20vw;"><br><br>
+              <label for="testtopic"><b>Assessment Topic : &nbsp;</b></label><br>
+              <input type="text" id="testtopic" class="no-outline" placeholder="Enter Assesment topic" name="testtopic" required style="float: left; width: 20vw;"><br><br>
+              <label for="testdifficulty"><b>Difficulty : &nbsp;</b></label><br>
+              <input type="text" id="testdifficulty" class="no-outline" placeholder="Enter Difficulty level" name="testdifficulty" required style="float: left; width: 20vw;"><br><br>
+              <label for="testpassmark"><b>Passmark : &nbsp;</b></label><br>
+              <input type="number" id="testpassmark" class="no-outline" placeholder="Enter Pass mark" name="testpassmark" required style="float: left; width: 20vw;"><br><br>
+              
+              <label for="subjectivequestions"><b>Select category of questions to add : &nbsp;</b></label><br>
+              <input id="katascheckbox" type="checkbox" > Katas &nbsp;
+              <input id="subjectivecheckbox" type="checkbox" > Subjective &nbsp;
+              <input id="multiplechoicecheckbox" type="checkbox" > MultipleChoice <br><br>
+              
+              <select  name="subjectivequestions" id="subjectivequestions" multiple style="float: left;width: 100% ; display: none;">
+                <option *ngFor="let item of subjectiveList" value="{{item.id}}">{{item.text}}</option>
+              </select>
+              <select  name="katasquestions" id="katasquestions" multiple style="float: left; width: 100% ; display: none;">
+                <option *ngFor="let item of katasList" value="{{item.id}}">{{item.text}}</option>
+              </select>
+              <select  name="multiplechoicequestions" id="multiplechoicequestions" multiple style="float: left; width: 100% ; display: none;">
+                <option *ngFor="let item of multipleChoiceList" value="{{item.id}}">{{item.text}}</option>
               </select>
             </div>
           </form>
@@ -83,21 +98,18 @@
           
           <form class="container" action="submit">
             <div class="section">
-              <label for="assesment"><b>Pick Assesment : &nbsp;</b></label>
-              <select name="assesment" id="assesment" >
-                <option value="arrays">Python Arrays</option>
-                <option value="angular">Angular Directives</option>
-                <option value="django">Django Assesment</option>
-                <option value="general">General Interview</option>
-              </select>&nbsp; &nbsp;
+              <label for="assesment"><b>Pick Assesment : &nbsp;</b></label><br>
+              <select name="assesment" id="assesment" style="width: 50%;" >
+                <option *ngFor="let item of assessmentList" value="{{item.id}}">{{item.name}}</option>
+              </select><br><br>
               <label for="time"><b>Enter time for assesment : &nbsp;</b></label>
-              <input type="text" id="time" placeholder="Enter time in mins" name="time" required>
+              <input type="text" id="time" placeholder="Enter time in mins" name="time" required> <br><br>
               <button type="button" id="publishbtn" class="btn btn-primary">Publish</button>
             </div>
           </form>
           
           <div class="container" >   
-          <input id="sendinvitecheckbox" type="checkbox"> Send Invite?
+          <input id="sendinvitecheckbox" type="checkbox"> Send Invite? 
           <div id="sendinvite">
           <div class ="row" style="background-color:#101F3C; justify-content: center;">
             <h6 style="text-decoration: underline;text-decoration-color: white;" >Send Invite</h6>
