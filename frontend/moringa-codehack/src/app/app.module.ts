@@ -16,7 +16,8 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { FormsModule } from '@angular/forms';
-import { TmLandingComponent } from './components/tm-landing/tm-landing.component' ;
+import { TmLandingComponent } from './components/tm-landing/tm-landing.component';
+import { SyntaxHighlightService } from './services/syntax-highlight/syntax-highlight.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,6 @@ import { TmLandingComponent } from './components/tm-landing/tm-landing.component
     LoginComponent,
     SignupComponent,
     TmLandingComponent,
-   
   ],
   imports: [
     BrowserModule,
@@ -43,7 +43,8 @@ import { TmLandingComponent } from './components/tm-landing/tm-landing.component
     HttpClientModule
   ],
 
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

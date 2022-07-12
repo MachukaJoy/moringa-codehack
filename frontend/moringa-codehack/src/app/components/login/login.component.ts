@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
       .subscribe((response: any) => {
         if (Object.keys(response).includes('jwt')) {
           this.message = response.message;
+          console.log(this.message)
           this.router.navigate(['/landing']);
         } else {
           console.log(response);
