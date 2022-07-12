@@ -9,19 +9,20 @@ import { QuestionsService } from 'src/app/services/questions/questions.service';
   styleUrls: ['./create-test.component.css']
 })
 export class CreateTestComponent implements OnInit {
-  dropdownList:any = [];
+  subjectiveList:any = [];
   katasList:any =[];
   multipleChoiceList:any = [];
-  // dropdownSettings:IDropdownSettings={};
+  assessmentList:any = [];
+ 
 
-  constructor(private subjective:QuestionsService, private katas:QuestionsService, private multiple:QuestionsService) { }
+  constructor(private subjective:QuestionsService, private katas:QuestionsService, private multiple:QuestionsService, private assessments:QuestionsService) { }
 
   ngOnInit(): void {
     
     let sendInvite = document.querySelector("#sendinvite") as HTMLDivElement;
     let inviteCheckbox = document.querySelector("#sendinvitecheckbox") as HTMLInputElement
-    let assesmentCheckbox = document.querySelector("#createassesmentcheckbox") as HTMLInputElement
-    let createassesment = document.querySelector("#createownassesment") as HTMLFormElement
+    // let assesmentCheckbox = document.querySelector("#createassesmentcheckbox") as HTMLInputElement
+    // let createassesment = document.querySelector("#createownassesment") as HTMLFormElement
     let katascheck = document.querySelector("#katascheckbox") as  HTMLInputElement
     let subjectivecheck = document.querySelector("#subjectivecheckbox") as HTMLInputElement
     let multiplecheck = document.querySelector("#multiplechoicecheckbox") as HTMLInputElement
@@ -37,13 +38,13 @@ export class CreateTestComponent implements OnInit {
       }
     });
 
-    assesmentCheckbox.addEventListener('change', function(){
-      if (this.checked){
-        createassesment.style.display='block'
-      } else {
-        createassesment.style.display='none'
-      }
-    });
+    // assesmentCheckbox.addEventListener('change', function(){
+    //   if (this.checked){
+    //     createassesment.style.display='block'
+    //   } else {
+    //     createassesment.style.display='none'
+    //   }
+    // });
 
     katascheck.addEventListener('change', function(){
       if (this.checked){
@@ -73,11 +74,12 @@ export class CreateTestComponent implements OnInit {
     this.getSubjective()
     this.getkatas()
     this.getMultipleChoice()
+    this.getAssessments()
   }
   getSubjective(){
     this.subjective.get_subjective().subscribe(response =>{
       console.log(response)
-      this.dropdownList=response
+      this.subjectiveList=response
     })
   }
 
@@ -89,9 +91,16 @@ export class CreateTestComponent implements OnInit {
   }
 
   getMultipleChoice(){
-    this.multiple.get_questions().subscribe(response =>{
+    this.multiple.get_mcquestions().subscribe(response =>{
       console.log(response)
       this.multipleChoiceList=response
+    })
+  }
+
+  getAssessments(){
+    this.assessments.get_assesments().subscribe(response =>{
+      console.log(response)
+      this.assessmentList=response
     })
   }
 
