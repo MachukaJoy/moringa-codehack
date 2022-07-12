@@ -8,7 +8,7 @@ export class QuestionsService {
   
   constructor(private http: HttpClient) {}
 
-  get_questions() {
+  get_mcquestions() {
     return this.http.get(
       'https://api-moringa-codehack.herokuapp.com/api/mcquestions/'
     );
@@ -23,6 +23,10 @@ export class QuestionsService {
       'https://api-moringa-codehack.herokuapp.com/api/kata/'
     )
     }
-}
-  
+  get_assesments() {
+    return this.http.get(
+      'https://api-moringa-codehack.herokuapp.com/api/assessments/'
+      )
+    }
 
+  }
