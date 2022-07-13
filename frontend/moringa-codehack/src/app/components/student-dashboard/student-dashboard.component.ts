@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticatedUserService } from 'src/app/services/authenticated-user/authenticated-user.service';
 
 @Component({
   selector: 'app-student-dashboard',
   templateUrl: './student-dashboard.component.html',
-  styleUrls: ['./student-dashboard.component.css']
+  styleUrls: ['./student-dashboard.component.css'],
 })
 export class StudentDashboardComponent implements OnInit {
   user!: any;
   userData!: any;
-  constructor(private authentication: AuthenticatedUserService) {}
+  constructor(
+    private authentication: AuthenticatedUserService,
+    private route: Router
+  ) {}
 
   ngOnInit(): void {
     this.authentication.getUser().subscribe((response) => {
@@ -31,5 +35,10 @@ export class StudentDashboardComponent implements OnInit {
       this.user = null;
     });
   }
-}
 
+  getCurrentAssessment(assessment: any) {
+    this.route.navigate(['/take-test'], {
+      queryParams: { data: assessment },
+    });
+  }
+}
