@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from 'src/app/classes/user/user';
+import { AuthenticatedUserService } from 'src/app/services/authenticated-user/authenticated-user.service';
 import { QuestionsService } from 'src/app/services/questions/questions.service';
 
 @Component({
@@ -8,7 +11,10 @@ import { QuestionsService } from 'src/app/services/questions/questions.service';
   styleUrls: ['./tm-landing.component.css'],
 })
 export class TmLandingComponent implements OnInit {
-  constructor(private questions: QuestionsService) {}
+  constructor(private questions: QuestionsService, private authentication: AuthenticatedUserService, private router: Router) {}
+
+
+  user!:any
 
   ngOnInit(): void {
     let titleWrapper = document.querySelector(
@@ -44,6 +50,14 @@ export class TmLandingComponent implements OnInit {
     // - - - - - - questions service pulling - - - - - - - //
     this.questions.get_mcquestions().subscribe((response: any) => {
       console.log(response);
+    });
+  }
+
+  logOut() {
+    this.authentication.logOut().subscribe((response) => {
+      console.log(response)
+      this.user = null;
+      this.router.navigate(['/landing']);
     });
   }
 }
