@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 interface Assessment{
   title: string;
   language: string;
@@ -10,21 +11,19 @@ interface Assessment{
 @Component({
   selector: 'app-assessment',
   templateUrl: './assessment.component.html',
-  styleUrls: ['./assessment.component.css']
+  styleUrls: ['./assessment.component.css'],
 })
-
 export class AssessmentComponent implements OnInit {
-  public assessments: Assessment[]= [{
-    title:'',
-    language:'',
-    dueDate:new Date(),
-    timeLimit:30,
+  public assessments: Assessment[] = [
+    {
+      title: '',
+      language: '',
+      dueDate: new Date(),
+      timeLimit: 30,
+    },
+  ];
 
-  }];
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
