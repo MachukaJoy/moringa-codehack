@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +16,7 @@ export class SignupComponent implements OnInit {
 
   submit(userName: string, userEmail: string, userPassword: string): void {
     this.http
-      .post<object>('http://localhost:8000/api/register/', {
+      .post<object>(`${environment.apiBase}/reqister/`, {
         username: userName,
         email: userEmail,
         password: userPassword,
