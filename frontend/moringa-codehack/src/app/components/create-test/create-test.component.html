@@ -48,38 +48,41 @@
           <input id="createassesmentcheckbox" type="checkbox" > Want to create your own assesment?
         </div><br> -->
           
-          <form class="container" action="submit" id="createownassesment">
+          <form class="container" id="createownassesment" (submit)="submit(assessmentname.value, assessmenttopic.value, assessmentdifficulty.value, assessmentpassmark.value, assessmenttimelimit.value, assessmentcategory.value)" >
             <div class="section">
-              <label for="assesment"><b>Create Assesment : &nbsp;</b></label><br>
-              <input type="text" id="testname" class="no-outline" placeholder="Enter Assesment name" name="testname" required style="float: left; width: 20vw;"><br><br>
+              <label for="testname"><b>Create Assesment : &nbsp;</b></label><br>
+              <input type="text" id="testname" class="no-outline" placeholder="Enter Assesment name"  #assessmentname required style="float: left; width: 20vw;"><br><br>
               <label for="testtopic"><b>Assessment Topic : &nbsp;</b></label><br>
-              <input type="text" id="testtopic" class="no-outline" placeholder="Enter Assesment topic" name="testtopic" required style="float: left; width: 20vw;"><br><br>
+              <input type="text" id="testtopic" class="no-outline" placeholder="Enter Assesment topic" #assessmenttopic required style="float: left; width: 20vw;"><br><br>
               <label for="testdifficulty"><b>Difficulty : &nbsp;</b></label><br>
-              <input type="text" id="testdifficulty" class="no-outline" placeholder="Enter Difficulty level" name="testdifficulty" required style="float: left; width: 20vw;"><br><br>
+              <input type="text" id="testdifficulty" class="no-outline" placeholder="Enter Difficulty level" #assessmentdifficulty  required style="float: left; width: 20vw;"><br><br>
               <label for="testpassmark"><b>Passmark : &nbsp;</b></label><br>
-              <input type="number" id="testpassmark" class="no-outline" placeholder="Enter Pass mark" name="testpassmark" required style="float: left; width: 20vw;"><br><br>
+              <input type="string" id="testpassmark" class="no-outline" placeholder="Enter Pass mark" #assessmentpassmark required style="float: left; width: 20vw;"><br><br>
+              <label for="testtimelimit"><b>Time Limit : &nbsp;</b></label><br>
+              <input type="string" id="testtimelimit" class="no-outline" placeholder="Enter Time Limit" #assessmenttimelimit required style="float: left; width: 20vw;"><br><br>
               
               <label for="subjectivequestions"><b>Select category of questions to add : &nbsp;</b></label><br>
-              <input id="katascheckbox" type="checkbox" > Katas &nbsp;
-              <input id="subjectivecheckbox" type="checkbox" > Subjective &nbsp;
-              <input id="multiplechoicecheckbox" type="checkbox" > MultipleChoice <br><br>
+              <input id="katascheckbox" type="radio" value="kata" name="category"  #assessmentcategory > Katas &nbsp;
+              <input id="subjectivecheckbox" type="radio" value="subjective" name="category" #assessmentcategory> Subjective &nbsp;
+              <input id="multiplechoicecheckbox" type="radio" value="multiple_choice" name="category" #assessmentcategory> MultipleChoice <br><br>
               
               <select  name="subjectivequestions" id="subjectivequestions" multiple style="float: left;width: 100% ; display: none;">
-                <option *ngFor="let item of subjectiveList" value="{{item.id}}">{{item.text}}</option>
+                <option *ngFor="let item of subjectiveList" value="{{item.id}}">{{item.question}}</option>
               </select>
               <select  name="katasquestions" id="katasquestions" multiple style="float: left; width: 100% ; display: none;">
-                <option *ngFor="let item of katasList" value="{{item.id}}">{{item.text}}</option>
+                <option *ngFor="let item of katasList" value="{{item.id}}">{{item.question}}</option>
               </select>
               <select  name="multiplechoicequestions" id="multiplechoicequestions" multiple style="float: left; width: 100% ; display: none;">
                 <option *ngFor="let item of multipleChoiceList" value="{{item.id}}">{{item.text}}</option>
               </select>
             </div>
+            <button type="submit" class="btn" id="savebtn" style="margin-top: 2vh;">Save changes</button>
           </form>
           
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn" id="savebtn">Save changes</button>
+          
         </div>
       </div>
     </div>
@@ -102,9 +105,8 @@
               <select name="assesment" id="assesment" style="width: 50%;" >
                 <option *ngFor="let item of assessmentList" value="{{item.id}}">{{item.name}}</option>
               </select><br><br>
-              <label for="time"><b>Enter time for assesment : &nbsp;</b></label>
-              <input type="text" id="time" placeholder="Enter time in mins" name="time" required> <br><br>
-              <button type="button" id="publishbtn" class="btn btn-primary">Publish</button>
+              
+              <button type="button" id="publishbtn" class="btn btn-primary" style="margin-bottom: 2vh ;">Publish</button>
             </div>
           </form>
           
