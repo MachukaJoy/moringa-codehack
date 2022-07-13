@@ -1,8 +1,14 @@
-
 <div class="container1">
   <h2>Assessment Name</h2>
   <div class="timer">
-    <h3><cd-timer format="intelli" [startTime]="3600" [countdown]="true"(onComplete)="submitAssessment()"></cd-timer></h3>
+    <h3>
+      <cd-timer
+        format="intelli"
+        [startTime]="3600"
+        [countdown]="true"
+        (onComplete)="submitAssessment()"
+      ></cd-timer>
+    </h3>
   </div>
   <div class="question-remaining"></div>
   <form class="radio-questions">
@@ -43,7 +49,12 @@
   <h2>Assessment Name</h2>
   <div class="timer">
     <h3>
-      <cd-timer format="intelli" [startTime]="3600" [countdown]="true" (onComplete)="submitAssessment()"></cd-timer>
+      <cd-timer
+        format="intelli"
+        [startTime]="3600"
+        [countdown]="true"
+        (onComplete)="submitAssessment()"
+      ></cd-timer>
     </h3>
   </div>
   <div class="card-content">
@@ -76,10 +87,8 @@
       </div>
 
       <div class="buttons">
-        <button class="btn btn-primary" (click)="runCode()">Run</button>
-        <button class="kata btn btn-primary" (click)="testCode(simpleKata.id)">
-          Test
-        </button>
+        <button (click)="runCode()">Run</button>
+        <button (click)="testCode(simpleKata.id)">Test</button>
       </div>
     </form>
 
@@ -140,7 +149,7 @@
       <pre></pre>
       <button
         [disabled]="!confirmationTests"
-        class="kata btn btn-primary"
+        
         type="submit"
       >
         Submit
@@ -152,9 +161,14 @@
 <div class="subjective">
   <h2>Assessment Name</h2>
   <div class="timer">
-  <h3>
-    <cd-timer format="intelli" [startTime]="3600" [countdown]="true" (onComplete)="submitAssessment()"></cd-timer>
-  </h3>
+    <h3>
+      <cd-timer
+        format="intelli"
+        [startTime]="3600"
+        [countdown]="true"
+        (onComplete)="submitAssessment()"
+      ></cd-timer>
+    </h3>
   </div>
   <form class="free">
     <h5>

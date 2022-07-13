@@ -1,28 +1,42 @@
 <div class="navigation">
   <!-- <button routerLink="/results"> YOUR RESULTS</button> -->
-  <a href="/results"><button id="real" class="practice">YOUR RESULTS</button></a>
-  <button>ASSESSMENT</button>
-  <button>COMPLETED</button>
+  <a href="/results"
+    ><button id="real" class="practice">Your Results</button></a
+  >
+  <a href="/practise-test"
+    ><button id="real" class="practice">Practice</button></a
+  >
+  <button>Assessments</button>
+  <button>Completed</button>
 </div>
 <div class="container">
-  <div class="photo">
+  <!-- <div class="photo">
     <img src="/assets/test.jpg" alt="">
-  </div>
+  </div> -->
   <div class="main">
     <h5>NestedList:Python</h5>
-    <span><img src="/assets/time.png" class="time">
-      Time Limit</span>
-    <br>
-    <button class="status">NOT STARTED</button>
+    <div class="info">
+      <div class="duration">
+        <div class="left">
+          <span
+            ><img src="/assets/time.png" class="time" />&nbsp; Time Limit</span
+          >
+        </div>
+      </div>
+      <div class="duration">
+        <div class="left">
+          <span>
+            <img src="/assets/time.png" class="time" />&nbsp; Duration</span
+          >
+        </div>
+      </div>
+    </div>
+    <!-- <button class="status">Not Started</button> -->
+  </div>
 
-  </div>
-  <div class="timeLimit">
-    <span>
-      <img src="/assets/time.png" class="time">
-      Duration</span>
-  </div>
   <div class="action">
-    <a href="/practise-test"><button id="real" class="practice">PRACTICE</button></a>
-    <a href="/take-test"><button id="real" class="real">START ASSESSMENT</button></a>
+    <a href="/take-test"
+      ><button id="real" class="real">Start Assessment</button></a
+    >
   </div>
 </div>
