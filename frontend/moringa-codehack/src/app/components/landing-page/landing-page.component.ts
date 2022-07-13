@@ -20,6 +20,7 @@ export class LandingPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.authentication.getUser().subscribe((response: User) => {
+      console.log(response)
       if (response.id) {
         this.user = response;
         if (/@([a-z\S]+)/.exec(String(this.user.email))) {
