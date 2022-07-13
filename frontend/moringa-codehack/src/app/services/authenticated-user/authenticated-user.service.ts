@@ -11,20 +11,20 @@ export class AuthenticatedUserService {
   ngOnInit() {}
   getUser() {
     return this.http.get<User>(
-      `${environment}/authenticated_user/`,
+      `${environment.apiBase}/authenticated_user/`,
 
       { withCredentials: true }
     );
   }
 
   getStudentData(username: string) {
-    return this.http.post(`${environment}/student_data/`, {
+    return this.http.post(`${environment.apiBase}/student_data/`, {
       username: username,
     });
   }
 
   logOut() {
-    return this.http.get(`${environment}/login/`, {
+    return this.http.get(`${environment.apiBase}/login/`, {
       withCredentials: true,
     });
   }
