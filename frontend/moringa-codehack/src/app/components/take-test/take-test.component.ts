@@ -1,27 +1,106 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { SyntaxHighlightService } from 'src/app/services/syntax-highlight/syntax-highlight.service';
+import * as ace from 'ace-builds';
+import { HttpClient } from '@angular/common/http';
 import { KatasService } from 'src/app/services/katas/katas.service';
-
 
 @Component({
   selector: 'app-take-test',
   templateUrl: './take-test.component.html',
   styleUrls: ['./take-test.component.css'],
 })
+export class TakeTestComponent
+  implements OnInit, AfterViewInit, AfterViewChecked
+{
+  code!: string;
+  output!: string;
+  simpleKata!: any;
+  confirmationTests!: any;
+  emptyTests: boolean = true;
+  allPassed!: boolean;
+  countdown!:boolean;
 
+  @ViewChild('codearea') private editor!: ElementRef<HTMLElement>;
 
-export class TakeTestComponent implements OnInit {
-  countdown: boolean;
-  
-  constructor(private kata: KatasService) {
-   this.countdown = true; 
+  constructor(
+    private kata: KatasService,
+    private highlightService: SyntaxHighlightService,
+    private http: HttpClient
+  ) {
+    this.countdown = true; 
+  }
+  ngAfterViewChecked(): void {
+    this.highlightService.highlight();
+  }
+
+  ngAfterViewInit(): void {
+    this.highlightService.highlight();
+    ace.config.set('fontSize', '16px');
+    ace.config.set(
+      'basePath',
+      'https://unpkg.com/ace-builds@1.4.12/src-noconflict'
+    );
+    const aceEditor = ace.edit(this.editor.nativeElement);
+    aceEditor.session.setValue(this.simpleKata.starter_code);
+    aceEditor.setTheme('ace/theme/tomorrow');
+    aceEditor.session.setMode('ace/mode/python');
   }
 
   ngOnInit(): void {
-    console.log(this.kata.studentAssessment);
+    this.highlightService.highlight();
+    this.kata.get_katas().subscribe((response: any) => {
+      console.log(response);
+      this.simpleKata = response[0];
+    });
   }
-  submitAssessment(){
 
+  testCode(questionId: number) {
+    const aceEditor = ace.edit(this.editor.nativeElement);
+    let userCode = aceEditor.getValue();
+    let payload = {
+      question: questionId,
+      action: 'test',
+      code: userCode,
+    };
+    this.http
+      .post('http://localhost:8000/api/run_code/', payload)
+      .subscribe((response: any) => {
+        this.confirmationTests = response.message;
+        if (this.confirmationTests.includes('False')) {
+          this.allPassed = false;
+        } else {
+          this.allPassed = true;
+        }
+      });
+  }
+
+  runCode() {
+    const aceEditor = ace.edit(this.editor.nativeElement);
+    let userCode = aceEditor.getValue();
+    let payload = {
+      code: userCode,
+      action: 'run',
+    };
+    this.http
+      .post('http://localhost:8000/api/run_code/', payload)
+      .subscribe((response: any) => {
+        //console.log(response);
+        if (Object.keys(response).includes('output')) {
+          this.output = response.output;
+        }
+      });
+  }
+
+  submitAssessment(){
     alert("Assessment Submitted")
   }
- 
+
 }
+

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) {}
-
+  message!: string;
   ngOnInit(): void {}
 
   submit(userName: string, userPassword: string): void {
@@ -22,12 +22,14 @@ export class LoginComponent implements OnInit {
         },
         { withCredentials: true }
       )
-      .subscribe((response: object) => {
+      .subscribe((response: any) => {
         if (Object.keys(response).includes('jwt')) {
-          console.log(response);
+          this.message = response.message;
+          console.log(this.message)
           this.router.navigate(['/landing']);
         } else {
           console.log(response);
+          this.message = response.message;
         }
       });
   }

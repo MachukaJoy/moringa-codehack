@@ -16,8 +16,8 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { FormsModule } from '@angular/forms';
-import { TmLandingComponent } from './components/tm-landing/tm-landing.component' ;
-import { CdTimerModule} from 'angular-cd-timer';
+import { TmLandingComponent } from './components/tm-landing/tm-landing.component';
+import { CdTimerModule } from 'angular-cd-timer';
 // import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
@@ -36,7 +36,6 @@ import { CdTimerModule} from 'angular-cd-timer';
     LoginComponent,
     SignupComponent,
     TmLandingComponent,
-   
   ],
   imports: [
     BrowserModule,
