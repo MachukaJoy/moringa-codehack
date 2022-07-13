@@ -18,7 +18,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { TmLandingComponent } from './components/tm-landing/tm-landing.component';
 import { CdTimerModule } from 'angular-cd-timer';
-// import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+
 
 @NgModule({
   declarations: [

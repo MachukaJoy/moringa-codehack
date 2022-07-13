@@ -28,5 +28,6 @@ export class QuestionsService {
       'https://api-moringa-codehack.herokuapp.com/api/assessments/'
       )
     }
+  
 
   }

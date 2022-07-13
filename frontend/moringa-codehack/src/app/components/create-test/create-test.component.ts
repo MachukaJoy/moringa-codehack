@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import { QuestionsService } from 'src/app/services/questions/questions.service';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 
 
 @Component({
@@ -122,28 +121,5 @@ export class CreateTestComponent implements OnInit {
     })
   }
 
-  submit(assessmentName: string, assessmentTopic: string, assessmentDifficulty: string, assessmentPassmark: string,
-    assessmentTimelimit: string, assessmentCategory:any): void{
-      let assesmentform = document.querySelector("#createownassesment") as HTMLFormElement
-      console.log(assesmentform)
-
-      this.http
-      .post<object>('https://api-moringa-codehack.herokuapp.com/api/assessments/', {
-        name: assessmentName,
-        topic: assessmentTopic,
-        difficulty: assessmentDifficulty,
-        pass_mark: assessmentPassmark,
-        time_limit: assessmentTimelimit,
-        category: assessmentCategory.value
-        
-      })
-      .subscribe((res) => {
-        console.log(res);
-        this.response = res;
-        this.message = this.response.message;
-        
-      });
-      
-  }
-
+  
 }
