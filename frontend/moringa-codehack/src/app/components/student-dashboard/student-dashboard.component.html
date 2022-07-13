@@ -1,15 +1,60 @@
- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<app-navbar></app-navbar>
+<div class="navigation">
+  <!-- <button routerLink="/results"> YOUR RESULTS</button> -->
+  <a href="/results"
+    ><button id="real" class="practice">Your Results</button></a
+  >
+  <a href="/practise-test"
+    ><button id="real" class="practice">Practice</button></a
+  >
+  <button>{{ userData.assessments.length }} Assessment(s)</button>
 
+  <button>Completed</button>
+</div>
+<div class="container">
+  <div class="main" *ngFor="let assessment of userData.assessments">
+    <div class="image">
+      <div class="photo">
+        <img src="/assets/test.jpg" alt="" />
+      </div>
+    </div>
+    <h5>
+      {{ assessment.name }}
+      <br />
+      <div class="info">
+        <div class="duration">
+          <div class="left">
+            <span
+              ><img src="/assets/time.png" class="time" />&nbsp;&nbsp;Time
+              Limit: {{ assessment.time_limit }}</span
+            >
+          </div>
+        </div>
+      </div>
+    </h5>
+    <!-- <div class="info">
+      <div class="duration">
+        <div class="left">
+          <span
+            ><img src="/assets/time.png" class="time" />&nbsp;
+            {{ assessment.time_limit }}</span
+          >
+        </div>
+      </div>
+      <div class="duration">
+        <div class="right">
+          <span>
+            <img src="/assets/time.png" class="time" />&nbsp; Duration</span
+          >
+        </div>
+      </div>
+    </div> -->
+    <!-- <button class="status">Not Started</button> -->
+  </div>
 
-
-</body>
-</html>
+  <div class="action">
+    <a href="/take-test"
+      ><button id="real" class="real">Start Assessment</button></a
+    >
+  </div>
+</div>

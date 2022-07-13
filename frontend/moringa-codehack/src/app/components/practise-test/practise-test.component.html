@@ -3,65 +3,39 @@
 <div class="choices">
   <button id="mcque">Multiple Choice Practice</button>
   <button id="kataque">Kata Practice</button>
-  <button routerLink="/assessment">Assessments</button>
+  <button routerLink="/student-dashboard">Assessments</button>
 </div>
 
 <div class="container1">
-  <h2>Assessment Name</h2>
-  <h3>
-    <cd-timer
-      format="intelli"
-      [startTime]="20"
-      [countdown]="true"
-      (onComplete)="submitAssessment()"
-    ></cd-timer>
-  </h3>
+  <h2>Practice Test</h2>
+  <h3></h3>
   <div class="question-remaining"></div>
   <form class="radio-questions">
     <div class="card">
       <div class="card-content">
-        <h5>What is the correct number ?</h5>
+        <h5>{{ simpleMCQ.question }}</h5>
       </div>
       <div class="content">
-        <label class="containerone"
-          >One
-          <input type="radio" checked="checked" name="radio" id="answer" />
-          <span class="checkmark"></span>
-        </label>
-        <label class="containerone"
-          >Two
-          <input type="radio" name="radio" id="answer" />
-          <span class="checkmark"></span>
-        </label>
-        <label class="containerone"
-          >Three
-          <input type="radio" name="radio" id="answer" />
-          <span class="checkmark"></span>
-        </label>
-        <label class="containerone"
-          >Four
+        <label class="containerone" *ngFor="let answer of simpleMCQanswers"
+          >{{ answer.answer }}
+          <p *ngIf="mcqSubmitted && answer.correct">&nbsp;( Correct Answer )</p>
           <input type="radio" name="radio" id="answer" />
           <span class="checkmark"></span>
         </label>
       </div>
       <div class="bottom">
-        <button class="assessment btn btn-primary" type="submit">SUBMIT</button>
+        <button class="assessment" (click)="changeSubmit()">
+          Check Answer
+        </button>
       </div>
     </div>
   </form>
 </div>
 
 <div class="code-editor">
-  <h2>Assessment Name</h2>
+  <h2>Practice Test</h2>
   <div class="timer">
-    <h3>
-      <cd-timer
-        format="intelli"
-        [startTime]="20"
-        [countdown]="true"
-        (onComplete)="submitAssessment()"
-      ></cd-timer>
-    </h3>
+    <h3></h3>
   </div>
   <div class="card-content">
     <h5>
@@ -117,7 +91,8 @@
                 fill-rule="evenodd"
                 d="M0 7.5a7.5 7.5 0 1 1 15 0a7.5 7.5 0 0 1-15 0Zm7.072 3.21l4.318-5.398l-.78-.624l-3.682 4.601L4.32 7.116l-.64.768l3.392 2.827Z"
                 clip-rule="evenodd"
-              /></svg>Test Passed!</span
+              /></svg
+            >Test Passed!</span
           >
           <span *ngIf="test != 'True'"
             ><svg

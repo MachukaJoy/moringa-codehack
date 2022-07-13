@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import * as ace from 'ace-builds';
 import { KatasService } from 'src/app/services/katas/katas.service';
+import { QuestionsService } from 'src/app/services/questions/questions.service';
 import { SyntaxHighlightService } from 'src/app/services/syntax-highlight/syntax-highlight.service';
 
 @Component({
@@ -22,15 +23,19 @@ export class PractiseTestComponent
   code!: string;
   output!: string;
   simpleKata!: any;
+  simpleMCQ!: any;
+  simpleMCQanswers: any[] = [];
   confirmationTests!: any;
   emptyTests: boolean = true;
   allPassed!: boolean;
   countdown!: boolean;
+  mcqSubmitted=false
 
   @ViewChild('codearea') private editor!: ElementRef<HTMLElement>;
 
   constructor(
     private kata: KatasService,
+    private question: QuestionsService,
     private highlightService: SyntaxHighlightService,
     private http: HttpClient
   ) {
@@ -74,6 +79,22 @@ export class PractiseTestComponent
       console.log(response);
       this.simpleKata = response[0];
     });
+    this.question.get_mcquestions().subscribe((response: any) => {
+      console.log(response);
+      this.simpleMCQ = response[0];
+      this.question.get_mcanswers().subscribe((response: any) => {
+        console.log(response);
+        for (let answer of response) {
+          if (answer.question == this.simpleMCQ.id) {
+            this.simpleMCQanswers.push(answer);
+          }
+        }
+      });
+    });
+  }
+
+  changeSubmit(){
+    this.mcqSubmitted = true
   }
 
   testCode(questionId: number) {

@@ -54,6 +54,7 @@ h5 {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  display: flex;
 }
 
 .checkmark {
@@ -103,6 +104,14 @@ h5 {
 
 .card {
   background: inherit;
+  display: flex;
+  padding: 2vw;
+}
+
+.card .bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .timer {

@@ -16,6 +16,12 @@ export class AuthenticatedUserService {
     );
   }
 
+  getStudentData(username: string) {
+    return this.http.post('http://localhost:8000/api/student_data/', {
+      username: username,
+    });
+  }
+
   logOut() {
     return this.http.get('http://localhost:8000/api/logout/', {
       withCredentials: true,
