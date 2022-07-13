@@ -106,6 +106,7 @@ button {
   padding: 0.5vw 1.5vw;
   margin-right: 1vw;
   border-radius: 0.2vw;
+  color: #fff;
 }
 button:hover {
   background-color: #3a4863;

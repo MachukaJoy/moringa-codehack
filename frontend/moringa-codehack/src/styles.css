@@ -9,3 +9,7 @@ body {
   background-color: #101f3c;
   height: 100vh;
 }
+
+app-practice-test {
+  padding-bottom: 5vw;
+}
