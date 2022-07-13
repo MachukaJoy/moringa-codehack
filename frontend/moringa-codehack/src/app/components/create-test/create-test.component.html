@@ -63,24 +63,6 @@
             multiple options.
           </h6>
           <br />
-          <!-- <form class="container" action="submit">
-            <div class="section">
-              <label for="assesment"><b>Pick Assesment : &nbsp;</b></label><br>
-              <select name="assesment" id="assesment"  style="float: left;width: 15vw;">
-                <option *ngFor="let item of assessmentList" value="{{item.id}}">{{item.text}}</option>
-                
-              </select><br><br>
-              <label for="questions"><b>Select all questions to add : &nbsp;</b></label><br>
-              <select name="questions" id="questions" multiple style="float: left;">
-                 <option *ngFor="let item of subjectiveList" value="{{item.id}}">{{item.text}}</option>
-              </select>
-            </div>
-          </form>
-          <br><br><br><br><br>
-          <div>
-          <input id="createassesmentcheckbox" type="checkbox" > Want to create your own assesment?
-        </div><br> -->
-
           <form class="container" id="createownassesment">
             <div class="section">
               <label for="assesment"><b>Create Assesment : &nbsp;</b></label
@@ -143,15 +125,6 @@
                 style="float: left; width: 20vw"
                 #timelimit
               /><br /><br />
-
-              <!-- <label for="subjectivequestions"
-                ><b>Select category of questions to add : &nbsp;</b></label
-              ><br />
-              <input id="katascheckbox" #kata type="checkbox" /> Katas &nbsp;
-              <input id="subjectivecheckbox" #subjective type="checkbox" /> Subjective
-              &nbsp;
-              <input id="multiplechoicecheckbox" #multiple type="checkbox" />
-              MultipleChoice <br /><br /> -->
               <label for="category">Assessment Category:</label>
               <br />
               <select

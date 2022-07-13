@@ -7,23 +7,6 @@ import { AuthenticatedUserService } from 'src/app/services/authenticated-user/au
   styleUrls: ['./student-dashboard.component.css']
 })
 export class StudentDashboardComponent implements OnInit {
-
-// interface Assessment {
-//   title: string;
-//   language: string;
-//   dueDate: Date;
-//   timeLimit: number;
-// }
-
-  // public assessments: Assessment[] = [
-  //   {
-  //     title: '',
-  //     language: '',
-  //     dueDate: new Date(),
-  //     timeLimit: 30,
-  //   },
-  // ];
-
   user!: any;
   userData!: any;
   constructor(private authentication: AuthenticatedUserService) {}
@@ -49,3 +32,4 @@ export class StudentDashboardComponent implements OnInit {
     });
   }
 }
+
