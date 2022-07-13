@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   submit(userName: string, userPassword: string): void {
     this.http
       .post<object>(
-        'http://localhost:8000/api/login/',
+        `${environment.apiBase}/login/`,
         {
           username: userName,
           password: userPassword,

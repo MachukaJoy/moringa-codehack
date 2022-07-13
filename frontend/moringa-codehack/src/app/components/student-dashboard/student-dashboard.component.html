@@ -11,8 +11,8 @@
 
   <button>Completed</button>
 </div>
-<div class="container">
-  <div class="main" *ngFor="let assessment of userData.assessments">
+<div class="container" *ngFor="let assessment of userData.assessments">
+  <div class="main" >
     <div class="image">
       <div class="photo">
         <img src="/assets/test.jpg" alt="" />
@@ -35,8 +35,8 @@
   </div>
 
   <div class="action">
-    <a href="/take-test"
-      ><button id="real" class="real">Start Assessment</button></a
+    <a 
+      ><button id="real" class="real" (click)="getCurrentAssessment(assessment)">Start Assessment</button></a
     >
   </div>
 </div>

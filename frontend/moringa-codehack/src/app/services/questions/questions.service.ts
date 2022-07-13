@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -8,31 +9,23 @@ export class QuestionsService {
   constructor(private http: HttpClient) {}
 
   get_mcquestions() {
-    return this.http.get(
-      'https://api-moringa-codehack.herokuapp.com/api/mcquestions/'
-    );
+    return this.http.get(`${environment.apiBase}/mcquestions/`);
   }
   get_mcanswers() {
-    return this.http.get(
-      'https://api-moringa-codehack.herokuapp.com/api/mcanswers/'
-    );
+    return this.http.get(`${environment.apiBase}/mcanswers/`);
   }
   get_subjective() {
-    return this.http.get(
-      'https://api-moringa-codehack.herokuapp.com/api/squestions/'
-    );
+    return this.http.get(`${environment.apiBase}/squestions/`);
   }
   get_katas() {
-    return this.http.get(
-      'https://api-moringa-codehack.herokuapp.com/api/kata/'
-    );
+    return this.http.get(`${environment.apiBase}/kata/`);
   }
   get_assesments() {
-    return this.http.get('http://localhost:8000/api/assessments/');
+    return this.http.get(`${environment.apiBase}/assessments/`);
   }
 
   add_intive(data: any) {
-    return this.http.post('http://localhost:8000/api/add_invite/', {
+    return this.http.post(`${environment.apiBase}/add_invite/`, {
       assessment: data.assessment,
       users: data.emails,
       message: data.message,
@@ -40,7 +33,7 @@ export class QuestionsService {
   }
 
   add_assessment(data: any) {
-    return this.http.post<object>('http://localhost:8000/api/add_assessment/', {
+    return this.http.post<object>(`${environment.apiBase}/add_assessment/`, {
       name: data.name,
       topic: data.topic,
       difficulty: data.difficulty,
