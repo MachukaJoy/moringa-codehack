@@ -1,5 +1,4 @@
-
-hr { 
+hr {
   display: block;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
@@ -7,19 +6,24 @@ hr {
   margin-right: auto;
   border-style: inset;
   border-width: 1px;
-} 
-#navbtns{
-  background-color:#3A4863;
+}
+#navbtns {
+  background-color: #3a4863;
   color: white;
   border: none;
   margin: 1%;
   width: 10%;
-  height:40px;
+  height: 40px;
   border-radius: 5%;
 }
-#navlinks{
+
+#assessments option {
+  font-size: 1vw;
+}
+
+#navlinks {
   color: white;
-  margin: 1% ; 
+  margin: 1%;
 }
 
 #navlinks:visited {
@@ -28,45 +32,55 @@ hr {
   text-decoration: none;
 }
 #navlinks:hover {
-  color: #3A4863;
+  color: #3a4863;
   background-color: transparent;
   text-decoration: underline;
 }
 #navlinks:active {
-  color: #F35011;
+  color: #f35011;
   background-color: transparent;
   text-decoration: underline;
 }
-#buttonscolumn, #invitedbycolumn, #tablecolumn{
+#buttonscolumn,
+#invitedbycolumn,
+#tablecolumn {
   color: #fff;
+  width: 100%;
 }
-#colnavbtns{
-  background-color:#3A4863;
+#colnavbtns {
+  background-color: #3a4863;
   color: white;
   border: none;
   width: 100%;
-  height:40px;
+  height: 40px;
   border-radius: 5%;
 }
-#tablecolumn{
+#tablecolumn {
   border-left: 1px solid white;
   border-right: 1px solid white;
   height: 450px;
+  width: 100%;
 }
 #performancetable table {
   border-collapse: collapse;
   /* width: 5vw; */
 }
 
-#performancetable table th, td {
+#performancetable table tr,
+#performancetable table th {
+  width: 100%;
+}
+
+#performancetable table th,
+td {
   text-align: left;
   padding-left: 7vw;
   padding-right: 7vw;
 }
-#performancetable table td{
+#performancetable table td {
   font-size: small;
 }
-#invitedbytable table td{
+#invitedbytable table td {
   padding: 0;
   font-size: small;
 }

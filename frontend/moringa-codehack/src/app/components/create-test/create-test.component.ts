@@ -1,107 +1,153 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { QuestionsService } from 'src/app/services/questions/questions.service';
 // import { IDropdownSettings, } from 'ng-multiselect-dropdown';
-
 
 @Component({
   selector: 'app-create-test',
   templateUrl: './create-test.component.html',
-  styleUrls: ['./create-test.component.css']
+  styleUrls: ['./create-test.component.css'],
 })
 export class CreateTestComponent implements OnInit {
-  subjectiveList:any = [];
-  katasList:any =[];
-  multipleChoiceList:any = [];
-  assessmentList:any = [];
- 
+  subjectiveList: any = [];
+  katasList: any = [];
+  multipleChoiceList: any = [];
+  assessmentList: any = [];
+  kataselect!: HTMLSelectElement;
+  multipleselect!: HTMLSelectElement;
+  subjectiveselect!: HTMLSelectElement;
 
-  constructor(private subjective:QuestionsService, private katas:QuestionsService, private multiple:QuestionsService, private assessments:QuestionsService) { }
+  constructor(private questions: QuestionsService) {}
 
   ngOnInit(): void {
-    
-    let sendInvite = document.querySelector("#sendinvite") as HTMLDivElement;
-    let inviteCheckbox = document.querySelector("#sendinvitecheckbox") as HTMLInputElement
-    // let assesmentCheckbox = document.querySelector("#createassesmentcheckbox") as HTMLInputElement
-    // let createassesment = document.querySelector("#createownassesment") as HTMLFormElement
-    let katascheck = document.querySelector("#katascheckbox") as  HTMLInputElement
-    let subjectivecheck = document.querySelector("#subjectivecheckbox") as HTMLInputElement
-    let multiplecheck = document.querySelector("#multiplechoicecheckbox") as HTMLInputElement
-    let katasselect = document.querySelector("#katasquestions") as HTMLSelectElement
-    let multipleselect = document.querySelector("#multiplechoicequestions") as HTMLSelectElement
-    let subjectiveselect = document.querySelector("#subjectivequestions") as HTMLSelectElement
+    let sendInvite = document.querySelector('#sendinvite') as HTMLDivElement;
+    let inviteCheckbox = document.querySelector(
+      '#sendinvitecheckbox'
+    ) as HTMLInputElement;
+    let assesmentCheckbox = document.querySelector(
+      '#createassesmentcheckbox'
+    ) as HTMLInputElement;
+    let createassesment = document.querySelector(
+      '#createownassesment'
+    ) as HTMLFormElement;
+    this.kataselect = document.querySelector(
+      '#katasquestions'
+    ) as HTMLSelectElement;
+    this.multipleselect = document.querySelector(
+      '#multiplechoicequestions'
+    ) as HTMLSelectElement;
+    this.subjectiveselect = document.querySelector(
+      '#subjectivequestions'
+    ) as HTMLSelectElement;
 
-    inviteCheckbox.addEventListener('change', function() {
-      if (this.checked) {
-        sendInvite.style.display='block'
-      } else {
-        sendInvite.style.display='none'
-      }
+    this.getSubjective();
+    this.getkatas();
+    this.getMultipleChoice();
+    this.getAssessments();
+  }
+  getSubjective() {
+    this.questions.get_subjective().subscribe((response) => {
+      console.log(response);
+      this.subjectiveList = response;
     });
+  }
 
-    // assesmentCheckbox.addEventListener('change', function(){
-    //   if (this.checked){
-    //     createassesment.style.display='block'
-    //   } else {
-    //     createassesment.style.display='none'
-    //   }
-    // });
-
-    katascheck.addEventListener('change', function(){
-      if (this.checked){
-        katasselect.style.display='block'
-      } else{
-        katasselect.style.display='none'
-      }
+  getkatas() {
+    this.questions.get_katas().subscribe((response) => {
+      console.log(response);
+      this.katasList = response;
     });
+  }
 
-    multiplecheck.addEventListener('change', function(){
-      if (this.checked){
-        multipleselect.style.display='block'
-      } else{
-        multipleselect.style.display='none'
-      }
+  getMultipleChoice() {
+    this.questions.get_mcquestions().subscribe((response) => {
+      console.log(response);
+      this.multipleChoiceList = response;
     });
+  }
 
-    subjectivecheck.addEventListener('change', function(){
-      if (this.checked){
-        subjectiveselect.style.display='block'
-      } else{
-        subjectiveselect.style.display='none'
-      }
+  getAssessments() {
+    this.questions.get_assesments().subscribe((response) => {
+      console.log(response);
+      this.assessmentList = response;
     });
-
-
-    this.getSubjective()
-    this.getkatas()
-    this.getMultipleChoice()
-    this.getAssessments()
-  }
-  getSubjective(){
-    this.subjective.get_subjective().subscribe(response =>{
-      console.log(response)
-      this.subjectiveList=response
-    })
   }
 
-  getkatas(){
-    this.katas.get_katas().subscribe(response =>{
-      console.log(response)
-      this.katasList=response
-    })
+  createAssessment(
+    a: any,
+    b: any,
+    c: any,
+    d: any,
+    e: any,
+    f: any,
+    g: any,
+    h: any,
+    i: any
+  ) {
+    let selectedKatas = [];
+    let selectedSubjective = [];
+    let selectedMultiple = [];
+    for (let option of f.options) {
+      if (option.selected) {
+        selectedKatas.push(option.value);
+      }
+    }
+    for (let option of g.options) {
+      if (option.selected) {
+        selectedMultiple.push(option.value);
+      }
+    }
+    for (let option of h.options) {
+      if (option.selected) {
+        selectedSubjective.push(option.value);
+      }
+    }
+
+    let data: any = {
+      name: a,
+      topic: b,
+      difficulty: c,
+      pass_mark: Number(d),
+      category: e,
+      s_questions: selectedSubjective,
+      kata_questions: selectedKatas,
+      multiple_choice: selectedMultiple,
+      time_limit: Number(i),
+    };
+    console.log(data.time_limit);
+
+    this.questions.add_assessment(data).subscribe((response: any) => {
+      console.log(response);
+    });
   }
 
-  getMultipleChoice(){
-    this.multiple.get_mcquestions().subscribe(response =>{
-      console.log(response)
-      this.multipleChoiceList=response
-    })
+  changeCategory(event: any) {
+    if (event.target.value == 'kata') {
+      this.kataselect.style.display = 'block';
+    } else {
+      this.kataselect.style.display = 'none';
+    }
+
+    if (event.target.value == 'multiple_choice') {
+      this.multipleselect.style.display = 'block';
+    } else {
+      this.multipleselect.style.display = 'none';
+    }
+
+    if (event.target.value == 'subjective') {
+      this.subjectiveselect.style.display = 'block';
+    } else {
+      this.subjectiveselect.style.display = 'none';
+    }
   }
 
-  getAssessments(){
-    this.assessments.get_assesments().subscribe(response =>{
-      console.log(response)
-      this.assessmentList=response
-    })
+  sendInvite(a: string, b: string, c: string) {
+    let data = {
+      assessment: a,
+      emails: b,
+      message: c,
+    };
+    this.questions.add_intive(data).subscribe((response: any) => {
+      console.log(response);
+    });
   }
-
 }

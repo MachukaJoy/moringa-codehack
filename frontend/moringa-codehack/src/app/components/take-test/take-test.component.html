@@ -1,10 +1,11 @@
+<app-navbar></app-navbar>
 <div class="container1">
   <h2>Assessment Name</h2>
   <div class="timer">
     <h3>
       <cd-timer
         format="intelli"
-        [startTime]="3600"
+        [startTime]="20"
         [countdown]="true"
         (onComplete)="submitAssessment()"
       ></cd-timer>
@@ -51,7 +52,7 @@
     <h3>
       <cd-timer
         format="intelli"
-        [startTime]="3600"
+        [startTime]="20"
         [countdown]="true"
         (onComplete)="submitAssessment()"
       ></cd-timer>
@@ -164,7 +165,7 @@
     <h3>
       <cd-timer
         format="intelli"
-        [startTime]="3600"
+        [startTime]="20"
         [countdown]="true"
         (onComplete)="submitAssessment()"
       ></cd-timer>
@@ -180,7 +181,7 @@
       type="submit"
       style="align-content: center"
     >
-      SUBMIT
+      Submit
     </button>
   </form>
 </div>

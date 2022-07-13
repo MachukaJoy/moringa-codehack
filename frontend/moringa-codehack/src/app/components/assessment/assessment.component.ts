@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticatedUserService } from 'src/app/services/authenticated-user/authenticated-user.service';
 
 interface Assessment{
   title: string;
@@ -7,6 +8,7 @@ interface Assessment{
   timeLimit: number;
 }
 
+
 @Component({
   selector: 'app-assessment',
   templateUrl: './assessment.component.html',
@@ -14,6 +16,7 @@ interface Assessment{
 })
 
 export class AssessmentComponent implements OnInit {
+
   public assessments: Assessment[]= [{
     title:'',
     language:'',
@@ -21,10 +24,24 @@ export class AssessmentComponent implements OnInit {
     timeLimit:30,
 
   }];
+  
+  user!: any;
+  constructor(private authentication: AuthenticatedUserService) {}
 
-  constructor() { }
 
   ngOnInit(): void {
+    this.authentication.getUser().subscribe((response) => {
+      if (response.id) {
+        this.user = response;
+      }
+    });
+  }
+
+  logOut() {
+    this.authentication.logOut().subscribe((response) => {
+      console.log(response)
+      this.user = null;
+    });
   }
 
 }
