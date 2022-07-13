@@ -16,8 +16,10 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { FormsModule } from '@angular/forms';
-import { TmLandingComponent } from './components/tm-landing/tm-landing.component';
 import { SyntaxHighlightService } from './services/syntax-highlight/syntax-highlight.service';
+import { TmLandingComponent } from './components/tm-landing/tm-landing.component';
+import { CdTimerModule } from 'angular-cd-timer';
+// import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -40,11 +42,12 @@ import { SyntaxHighlightService } from './services/syntax-highlight/syntax-highl
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CdTimerModule,
+    // NgMultiSelectDropDownModule.forRoot()
   ],
 
-  providers: [
-  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

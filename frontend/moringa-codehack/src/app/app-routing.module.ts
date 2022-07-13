@@ -13,7 +13,10 @@ import { CreateTestComponent } from './components/create-test/create-test.compon
 import { PerformanceListComponent } from './components/performance-list/performance-list.component';
 import { GradesComponent } from './components/grades/grades.component';
 import { ResultsComponent } from './components/results/results.component';
-// import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+
+
+ 
 
 const routes: Routes = [
   {path:'',component:LandingPageComponent},
@@ -27,10 +30,7 @@ const routes: Routes = [
   { path: 'results', component: ResultsComponent},
   {path:'tmlanding', component:TmLandingComponent},
   {path:'tmdashboard', component:TmDashboardComponent},
-  {path:'tmlanding/login', component:TmLandingComponent,   
-children:[{
-  path:'', component:LoginComponent
-}]},
+  {path: 'take-test', component: TakeTestComponent },
 {path:'tmlanding/dashboard', component:TmLandingComponent,
 children:[{
   path:'', component:TmDashboardComponent
@@ -51,7 +51,7 @@ children:[{
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), HttpClientModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

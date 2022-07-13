@@ -6,11 +6,10 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { KatasService } from 'src/app/katas.service';
 import { SyntaxHighlightService } from 'src/app/services/syntax-highlight/syntax-highlight.service';
-import { Inject } from '@angular/core';
 import * as ace from 'ace-builds';
 import { HttpClient } from '@angular/common/http';
+import { KatasService } from 'src/app/services/katas/katas.service';
 
 @Component({
   selector: 'app-take-test',
@@ -26,6 +25,7 @@ export class TakeTestComponent
   confirmationTests!: any;
   emptyTests: boolean = true;
   allPassed!: boolean;
+  countdown!:boolean;
 
   @ViewChild('codearea') private editor!: ElementRef<HTMLElement>;
 
@@ -33,7 +33,9 @@ export class TakeTestComponent
     private kata: KatasService,
     private highlightService: SyntaxHighlightService,
     private http: HttpClient
-  ) {}
+  ) {
+    this.countdown = true; 
+  }
   ngAfterViewChecked(): void {
     this.highlightService.highlight();
   }
@@ -95,4 +97,10 @@ export class TakeTestComponent
         }
       });
   }
+
+  submitAssessment(){
+    alert("Assessment Submitted")
+  }
+
 }
+

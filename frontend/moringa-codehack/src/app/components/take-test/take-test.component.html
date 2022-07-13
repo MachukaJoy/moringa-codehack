@@ -1,9 +1,8 @@
-<app-navbar></app-navbar>
 
 <div class="container1">
   <h2>Assessment Name</h2>
   <div class="timer">
-    <h3>5:30</h3>
+    <h3><cd-timer format="intelli" [startTime]="3600" [countdown]="true"(onComplete)="submitAssessment()"></cd-timer></h3>
   </div>
   <div class="question-remaining"></div>
   <form class="radio-questions">
@@ -43,7 +42,9 @@
 <div class="code-editor">
   <h2>Assessment Name</h2>
   <div class="timer">
-    <h3>5:30</h3>
+    <h3>
+      <cd-timer format="intelli" [startTime]="3600" [countdown]="true" (onComplete)="submitAssessment()"></cd-timer>
+    </h3>
   </div>
   <div class="card-content">
     <h5>
@@ -150,6 +151,11 @@
 
 <div class="subjective">
   <h2>Assessment Name</h2>
+  <div class="timer">
+  <h3>
+    <cd-timer format="intelli" [startTime]="3600" [countdown]="true" (onComplete)="submitAssessment()"></cd-timer>
+  </h3>
+  </div>
   <form class="free">
     <h5>
       What are the advantages and disadvantages of using a Javascript framework?
