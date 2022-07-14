@@ -24,6 +24,13 @@ export class QuestionsService {
     return this.http.get(`${environment.apiBase}/assessments/`);
   }
 
+  get_single_question(category: string, id: any) {
+    return this.http.post(`${environment.apiBase}/question/`, {
+      category: category,
+      id: id,
+    });
+  }
+
   add_intive(data: any) {
     return this.http.post(`${environment.apiBase}/add_invite/`, {
       assessment: data.assessment,

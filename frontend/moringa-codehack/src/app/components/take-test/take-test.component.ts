@@ -10,6 +10,8 @@ import { SyntaxHighlightService } from 'src/app/services/syntax-highlight/syntax
 import * as ace from 'ace-builds';
 import { HttpClient } from '@angular/common/http';
 import { KatasService } from 'src/app/services/katas/katas.service';
+import { ActivatedRoute, Navigation, Router } from '@angular/router';
+import { QuestionsService } from 'src/app/services/questions/questions.service';
 
 @Component({
   selector: 'app-take-test',
@@ -25,16 +27,26 @@ export class TakeTestComponent
   confirmationTests!: any;
   emptyTests: boolean = true;
   allPassed!: boolean;
-  countdown!:boolean;
+  countdown!: boolean;
+  multiChoice!: boolean;
+  kataAssessment!: boolean;
+  subjectiveAssessment!: boolean;
+  displayKata!: any;
+  displayKataTests!:any
+  displayMultiChoice!: any;
+  displaySubjective!: any;
+  payload!: string;
 
   @ViewChild('codearea') private editor!: ElementRef<HTMLElement>;
 
   constructor(
     private kata: KatasService,
     private highlightService: SyntaxHighlightService,
-    private http: HttpClient
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private question: QuestionsService
   ) {
-    this.countdown = true; 
+    this.countdown = true;
   }
   ngAfterViewChecked(): void {
     this.highlightService.highlight();
@@ -48,15 +60,28 @@ export class TakeTestComponent
       'https://unpkg.com/ace-builds@1.4.12/src-noconflict'
     );
     const aceEditor = ace.edit(this.editor.nativeElement);
-    aceEditor.session.setValue(this.simpleKata.starter_code);
+    aceEditor.session.setValue(this.displayKata.question.starter_code);
     aceEditor.setTheme('ace/theme/tomorrow');
     aceEditor.session.setMode('ace/mode/python');
   }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params: any) => {
+      this.payload = params.data;
+      console.log(this.payload.split(' '));
+    });
+    this.question
+      .get_single_question(
+        this.payload.split(' ')[0],
+        Number(this.payload.split(' ')[1])
+      )
+      .subscribe((response: any) => {
+        console.log(response);
+        this.displayKata = response
+        this.displayKataTests = this.displayKata.tests
+      });
     this.highlightService.highlight();
     this.kata.get_katas().subscribe((response: any) => {
-      console.log(response);
       this.simpleKata = response[0];
     });
   }
@@ -98,9 +123,7 @@ export class TakeTestComponent
       });
   }
 
-  submitAssessment(){
-    alert("Assessment Submitted")
+  submitAssessment() {
+    alert('Assessment Submitted');
   }
-
 }
-

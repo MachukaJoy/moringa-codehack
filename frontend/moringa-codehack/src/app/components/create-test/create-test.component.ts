@@ -88,17 +88,17 @@ export class CreateTestComponent implements OnInit {
     let selectedMultiple = [];
     for (let option of f.options) {
       if (option.selected) {
-        selectedKatas.push(option.value);
+        selectedSubjective.push(option.value);
       }
     }
     for (let option of g.options) {
       if (option.selected) {
-        selectedMultiple.push(option.value);
+        selectedKatas.push(option.value);
       }
     }
     for (let option of h.options) {
       if (option.selected) {
-        selectedSubjective.push(option.value);
+        selectedMultiple.push(option.value);
       }
     }
 

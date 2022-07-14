@@ -24,7 +24,7 @@ export class AuthenticatedUserService {
   }
 
   logOut() {
-    return this.http.get(`${environment.apiBase}/login/`, {
+    return this.http.get(`${environment.apiBase}/logout/`, {
       withCredentials: true,
     });
   }
