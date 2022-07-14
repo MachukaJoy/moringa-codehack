@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit {
 
   submit(userName: string, userEmail: string, userPassword: string): void {
     this.http
-      .post<object>(`${environment.apiBase}/reqister/`, {
+      .post<object>(`${environment.apiBase}/register/`, {
         username: userName,
         email: userEmail,
         password: userPassword,
