@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar>
 <div class="container1">
   <h2>Assessment Name</h2>
   <div class="timer">
@@ -44,15 +44,15 @@
       </div>
     </div>
   </form>
-</div>
+</div> -->
 
 <div class="code-editor">
-  <h2>Assessment Name</h2>
+  <h2>{{displayKata.assessment.name}}</h2>
   <div class="timer">
     <h3>
       <cd-timer
         format="intelli"
-        [startTime]="20"
+        [startTime]="displayKata.assessment.time_limit * 60"
         [countdown]="true"
         (onComplete)="submitAssessment()"
       ></cd-timer>
@@ -60,7 +60,7 @@
   </div>
   <div class="card-content">
     <h5>
-      {{ simpleKata.question }}
+      {{ displayKata.question.question }}
     </h5>
   </div>
   <br />
@@ -89,7 +89,7 @@
 
       <div class="buttons">
         <button (click)="runCode()">Run</button>
-        <button (click)="testCode(simpleKata.id)">Test</button>
+        <button (click)="testCode(displayKata.question.id)">Test</button>
       </div>
     </form>
 
@@ -159,7 +159,7 @@
   </div>
 </div>
 
-<div class="subjective">
+<!-- <div class="subjective">
   <h2>Assessment Name</h2>
   <div class="timer">
     <h3>
@@ -184,4 +184,4 @@
       Submit
     </button>
   </form>
-</div>
+</div> -->

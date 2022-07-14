@@ -36,9 +36,9 @@ export class StudentDashboardComponent implements OnInit {
     });
   }
 
-  getCurrentAssessment(assessment: any) {
-    this.route.navigate(['/take-test'], {
-      queryParams: { data: assessment },
+  getCurrentAssessment(a: any, b: any) {
+    this.route.navigate(['take-test'], {
+      queryParams: { data: `${String(a) + ' ' + String(b)}` },
     });
   }
 }

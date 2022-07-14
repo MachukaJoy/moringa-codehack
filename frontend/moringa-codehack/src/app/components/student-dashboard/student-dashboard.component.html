@@ -12,21 +12,21 @@
   <button>Completed</button>
 </div>
 <div class="container" *ngFor="let assessment of userData.assessments">
-  <div class="main" >
+  <div class="main">
     <div class="image">
       <div class="photo">
         <img src="/assets/test.jpg" alt="" />
       </div>
     </div>
     <h5>
-      {{ assessment.name }}
+      {{ assessment.name }} ( {{ assessment.category }} )
       <br />
       <div class="info">
         <div class="duration">
           <div class="left">
             <span
               ><img src="/assets/time.png" class="time" />&nbsp;&nbsp;Time
-              Limit: {{ assessment.time_limit }}</span
+              Limit: {{ assessment.time_limit }} Minutes</span
             >
           </div>
         </div>
@@ -35,8 +35,14 @@
   </div>
 
   <div class="action">
-    <a 
-      ><button id="real" class="real" (click)="getCurrentAssessment(assessment)">Start Assessment</button></a
+    <a
+      ><button
+        id="real"
+        class="real"
+        (click)="getCurrentAssessment(assessment.category, assessment.id)"
+      >
+        Start Assessment
+      </button></a
     >
   </div>
 </div>

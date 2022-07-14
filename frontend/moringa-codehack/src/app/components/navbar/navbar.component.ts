@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { NONE_TYPE } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticatedUserService } from 'src/app/services/authenticated-user/authenticated-user.service';
 
 @Component({
@@ -10,7 +11,10 @@ import { AuthenticatedUserService } from 'src/app/services/authenticated-user/au
 })
 export class NavbarComponent implements OnInit {
   user!: any;
-  constructor(private authentication: AuthenticatedUserService) {}
+  constructor(
+    private authentication: AuthenticatedUserService,
+    private route: Router
+  ) {}
 
   ngOnInit(): void {
     this.authentication.getUser().subscribe((response) => {
@@ -22,8 +26,9 @@ export class NavbarComponent implements OnInit {
 
   logOut() {
     this.authentication.logOut().subscribe((response) => {
-      console.log(response)
+      console.log(response);
       this.user = null;
+      this.route.navigate(['/landing']);
     });
   }
 }
