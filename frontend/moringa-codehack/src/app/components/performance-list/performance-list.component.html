@@ -7,7 +7,7 @@
     <div style="float: right;">
       <label for="questions" style=" color: white;"><b>Select assesment to view: &nbsp;</b></label>
       <select name="assesments" id="assesments" style="width: 100%;">
-        <option *ngFor="let item of assessmentList" value="{{item.id}}">{{item.question}}</option>
+        <option *ngFor="let item of assessmentList" value="{{item.id}}">{{item.name}}</option>
       </select>
     </div>
   </div>

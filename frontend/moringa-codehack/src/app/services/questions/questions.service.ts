@@ -32,6 +32,7 @@ export class QuestionsService {
     });
   }
 
+
   add_assessment(data: any) {
     return this.http.post<object>(`${environment.apiBase}/add_assessment/`, {
       name: data.name,
@@ -43,6 +44,18 @@ export class QuestionsService {
       s_questions: data.s_questions,
       kata_questions: data.kata_questions,
       multiple_choice: data.multiple_choice,
+    });
+  }
+
+  get_students(){
+    return this.http.get(`${environment.apiBase}/invites/`);
+  }
+
+  add_feedback(data: any) {
+    return this.http.post(`${environment.apiBase}/add_feedback/`, {
+      assessment: data.assessment,
+      grade: data.grade,
+      feedback: data.feedback,
     });
   }
 }

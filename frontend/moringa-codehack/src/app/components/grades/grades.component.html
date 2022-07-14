@@ -73,18 +73,19 @@
               <label for="assesment"><b>Pick Assesment : &nbsp;</b></label>
               <select name="assesment" id="assesment">
                 <option
-                  *ngFor="let item of assessmentList"
-                  value="{{ item.id }}"
-                >
-                  {{ item.name }}
+                  *ngFor="let item of studentList"
+                value="{{ item.id }}"
+              >
+                {{ item.assessment }}
                 </option></select
-              >&nbsp;
+              ><br><br>
               <label for="assesment"><b>Pick Student : &nbsp;</b></label>
               <select name="assesment" id="assesment">
-                <option value="student1">Somebody somebody</option>
-                <option value="student2">Faith Wanje</option>
-                <option value="student3">Anna Annah</option>
-                <option value="student4">Genesis Genrad</option>
+                <option *ngFor="let item of studentList"
+                value="{{ item.id }}"
+              >
+                {{ item.users }}</option>
+                
               </select>
             </div>
           </form>
@@ -125,6 +126,7 @@
                     class="no-outline"
                     placeholder="Enter grade"
                     name="gradeentered"
+                    #gradeinput
                     required
                   /><br />
                   &nbsp;
@@ -132,13 +134,14 @@
                   <textarea
                     type="text"
                     id="feedbackinput"
+                    #feedbackinput
                     class="no-outline"
                     placeholder="Enter your feedback"
                     name="feedback"
                     required
                   ></textarea
                   ><br />
-                  <button action="submit" id="gradebtn">
+                  <button action="submit" id="gradebtn" >
                     Submit & Release
                   </button>
                 </form>
